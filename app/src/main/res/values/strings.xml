@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">JgiveApp</string>
+    <string name="title_activity_tithe">TitheActivity</string>
+    <string name="jgive_logo">Jgive Logo</string>
+</resources>
