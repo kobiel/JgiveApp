@@ -18,8 +18,9 @@
         android:id="@+id/incomesTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:text="@string/incomes"/>
 
     <!-- Incomes Amount -->
@@ -27,18 +28,21 @@
         android:id="@+id/incomesAmountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_toEndOf="@+id/incomesTextView"
         android:layout_toRightOf="@+id/incomesTextView"
-        android:textSize="20dp"/>
+        android:textSize="20sp"/>
 
     <!-- Tithe Free Title -->
     <TextView
         android:id="@+id/titheFreeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_below="@+id/incomesTextView"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:text="@string/tithe_free"/>
 
     <!-- Tithe Free Amount -->
@@ -46,19 +50,22 @@
         android:id="@+id/titheFreeAmountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_toEndOf="@+id/titheFreeTextView"
         android:layout_toRightOf="@+id/titheFreeTextView"
         android:layout_below="@+id/incomesAmountTextView"
-        android:textSize="20dp"/>
+        android:textSize="20sp"/>
 
     <!-- Donations Title -->
     <TextView
         android:id="@+id/donationsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_below="@+id/titheFreeTextView"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:text="@string/donations"/>
 
     <!-- Donations Amount -->
@@ -66,19 +73,22 @@
         android:id="@+id/donationsAmountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_toEndOf="@+id/donationsTextView"
         android:layout_toRightOf="@+id/donationsTextView"
         android:layout_below="@+id/titheFreeAmountTextView"
-        android:textSize="20dp"/>
+        android:textSize="20sp"/>
 
     <!-- Provisions Title -->
     <TextView
         android:id="@+id/provisionsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_below="@+id/donationsTextView"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:text="@string/provisions"/>
 
     <!-- Provisions Amount -->
@@ -86,8 +96,10 @@
         android:id="@+id/provisionsAmountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_toEndOf="@+id/provisionsTextView"
         android:layout_toRightOf="@+id/provisionsTextView"
         android:layout_below="@+id/donationsAmountTextView"
-        android:textSize="20dp"/>
+        android:textSize="20sp"/>
 </RelativeLayout>
