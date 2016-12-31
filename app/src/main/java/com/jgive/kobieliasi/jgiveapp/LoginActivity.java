@@ -8,15 +8,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 /**
- * Created by Kobi Eliasi on 24/12/2016.
- * Tithe Activity
+ * Created by Kobi Eliasi on 31/12/2016.
+ * Login Activity
  */
-public class TitheActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tithe);
+        setContentView(R.layout.activity_login);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

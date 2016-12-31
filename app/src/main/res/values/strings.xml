@@ -9,6 +9,16 @@
     <string name="donations">Donations</string>
     <string name="provisions">Provisions</string>
 
+    // Login and Register Activities
+    <string name="email">Email</string>
+    <string name="enterEmail">Enter your email</string>
+    <string name="password">Password</string>
+    <string name="enterPassword">eg. X8df!90EO</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+
     // Content Description
     <string name="jgive_logo">Jgive Logo</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
 </resources>
