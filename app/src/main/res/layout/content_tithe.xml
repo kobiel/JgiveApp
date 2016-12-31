@@ -13,4 +13,81 @@
     tools:context="com.jgive.kobieliasi.jgiveapp.TitheActivity"
     tools:showIn="@layout/activity_tithe">
 
+    <!-- Incomes Title -->
+    <TextView
+        android:id="@+id/incomesTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:textSize="20dp"
+        android:text="@string/incomes"/>
+
+    <!-- Incomes Amount -->
+    <TextView
+        android:id="@+id/incomesAmountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_toRightOf="@+id/incomesTextView"
+        android:textSize="20dp"/>
+
+    <!-- Tithe Free Title -->
+    <TextView
+        android:id="@+id/titheFreeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_below="@+id/incomesTextView"
+        android:textSize="20dp"
+        android:text="@string/tithe_free"/>
+
+    <!-- Tithe Free Amount -->
+    <TextView
+        android:id="@+id/titheFreeAmountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_toRightOf="@+id/titheFreeTextView"
+        android:layout_below="@+id/incomesAmountTextView"
+        android:textSize="20dp"/>
+
+    <!-- Donations Title -->
+    <TextView
+        android:id="@+id/donationsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_below="@+id/titheFreeTextView"
+        android:textSize="20dp"
+        android:text="@string/donations"/>
+
+    <!-- Donations Amount -->
+    <TextView
+        android:id="@+id/donationsAmountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_toRightOf="@+id/donationsTextView"
+        android:layout_below="@+id/titheFreeAmountTextView"
+        android:textSize="20dp"/>
+
+    <!-- Provisions Title -->
+    <TextView
+        android:id="@+id/provisionsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_below="@+id/donationsTextView"
+        android:textSize="20dp"
+        android:text="@string/provisions"/>
+
+    <!-- Provisions Amount -->
+    <TextView
+        android:id="@+id/provisionsAmountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_toRightOf="@+id/provisionsTextView"
+        android:layout_below="@+id/donationsAmountTextView"
+        android:textSize="20dp"/>
 </RelativeLayout>

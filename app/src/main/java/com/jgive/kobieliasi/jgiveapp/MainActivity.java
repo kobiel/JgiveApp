@@ -14,12 +14,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        int seconds = 1000;
+        // define one second
+        int second = 1000;
+        // start a timer with logo display then goto Tithe activity
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             public void run() {
                 startActivity(new Intent(MainActivity.this, TitheActivity.class));
             }
-        }, 5*seconds);
+        }, 5*second);
     }
 }

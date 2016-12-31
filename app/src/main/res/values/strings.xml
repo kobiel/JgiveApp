@@ -1,5 +1,14 @@
 <resources>
-    <string name="app_name">JgiveApp</string>
+    // App and activities names
+    <string name="app_name">Jgive</string>
     <string name="title_activity_tithe">TitheActivity</string>
+
+    // Tithe Activity
+    <string name="incomes">Incomes</string>
+    <string name="tithe_free">Tithe free expenses</string>
+    <string name="donations">Donations</string>
+    <string name="provisions">Provisions</string>
+
+    // Content Description
     <string name="jgive_logo">Jgive Logo</string>
 </resources>
