@@ -64,11 +64,26 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String DROP_DONATIONS_TABLE =
             "DROP TABLE IF EXIST " + Constants.Donations.TABLE_NAME;
 
+    // Provisions table creation
+    private static final String CREATE_PROVISIONS_TABLE =
+            "CREATE TABLE " + Constants.Provisions.TABLE_NAME + " (" +
+                    Constants.Provisions._ID +             " INTEGER PRIMARY KEY," +
+                    Constants.Provisions.USER_NAME +       " TEXT," +
+                    Constants.Provisions.YEAR +            " INTEGER" +
+                    Constants.Provisions.MONTH +           " INTEGER" +
+                    Constants.Provisions.AMOUNT +          " REAL" +
+                    ");";
+
+    // Provisions table dropping
+    private static final String DROP_PROVISIONS_TABLE =
+            "DROP TABLE IF EXIST " + Constants.Provisions.TABLE_NAME;
+
     @Override
     public void onCreate(SQLiteDatabase db){
         db.execSQL(CREATE_INCOMES_TABLE);
         db.execSQL(CREATE_EXPENSES_TABLE);
         db.execSQL(CREATE_DONATIONS_TABLE);
+        db.execSQL(CREATE_PROVISIONS_TABLE);
     }
 
     @Override
@@ -77,6 +92,7 @@ public class DBHandler extends SQLiteOpenHelper {
         db.execSQL(DROP_INCOMES_TABLE);
         db.execSQL(DROP_EXPENSES_TABLE);
         db.execSQL(DROP_DONATIONS_TABLE);
+        db.execSQL(DROP_PROVISIONS_TABLE);
         onCreate(db);
     }
 
@@ -127,6 +143,20 @@ public class DBHandler extends SQLiteOpenHelper {
 
         // Inserting Row
         db.insert(Constants.Donations.TABLE_NAME, null, values);
+        db.close(); // Closing database connection
+    }
+
+    public void addProvisions(String user, int year, int month, Double amount){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(Constants.Provisions.USER_NAME, user);
+        values.put(Constants.Provisions.YEAR, year);
+        values.put(Constants.Provisions.MONTH, month);
+        values.put(Constants.Provisions.AMOUNT, amount);
+
+        // Inserting Row
+        db.insert(Constants.Provisions.TABLE_NAME, null, values);
         db.close(); // Closing database connection
     }
 }

@@ -36,4 +36,12 @@ final class Constants {
         public static final String YEAR = "year";
         public static final String MONTH = "month";
     }
+
+    public static abstract class Provisions implements BaseColumns {
+        public static final String TABLE_NAME = "donationsTable";
+        public static final String USER_NAME = "userName";
+        public static final String YEAR = "year";
+        public static final String MONTH = "month";
+        public static final String AMOUNT = "amount";
+    }
 }
