@@ -38,7 +38,7 @@ final class Constants {
     }
 
     public static abstract class Provisions implements BaseColumns {
-        public static final String TABLE_NAME = "donationsTable";
+        public static final String TABLE_NAME = "provisionsTable";
         public static final String USER_NAME = "userName";
         public static final String YEAR = "year";
         public static final String MONTH = "month";

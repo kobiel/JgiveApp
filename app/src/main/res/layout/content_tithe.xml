@@ -15,9 +15,10 @@
 
     <!-- Incomes Title -->
     <TextView
-        android:id="@+id/incomesTextView"
+        android:id="@+id/incomesTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:textSize="20sp"
@@ -28,20 +29,23 @@
         android:id="@+id/incomesAmountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_toEndOf="@+id/incomesTextView"
-        android:layout_toRightOf="@+id/incomesTextView"
+        android:layout_alignBaseline="@+id/incomesTitleTextView"
+        android:layout_alignBottom="@+id/incomesTitleTextView"
+        android:layout_toEndOf="@+id/incomesTitleTextView"
+        android:layout_toRightOf="@+id/incomesTitleTextView"
         android:textSize="20sp"/>
 
     <!-- Tithe Free Title -->
     <TextView
-        android:id="@+id/titheFreeTextView"
+        android:id="@+id/titheFreeTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_below="@+id/incomesTextView"
+        android:layout_below="@+id/incomesTitleTextView"
         android:textSize="20sp"
         android:text="@string/tithe_free"/>
 
@@ -52,19 +56,21 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_toEndOf="@+id/titheFreeTextView"
-        android:layout_toRightOf="@+id/titheFreeTextView"
+        android:layout_alignBaseline="@+id/titheFreeTitleTextView"
+        android:layout_alignBottom="@+id/titheFreeTitleTextView"
+        android:layout_toEndOf="@+id/titheFreeTitleTextView"
+        android:layout_toRightOf="@+id/titheFreeTitleTextView"
         android:layout_below="@+id/incomesAmountTextView"
         android:textSize="20sp"/>
 
     <!-- Donations Title -->
     <TextView
-        android:id="@+id/donationsTextView"
+        android:id="@+id/donationsTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_below="@+id/titheFreeTextView"
+        android:layout_below="@+id/titheFreeTitleTextView"
         android:textSize="20sp"
         android:text="@string/donations"/>
 
@@ -75,19 +81,21 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_toEndOf="@+id/donationsTextView"
-        android:layout_toRightOf="@+id/donationsTextView"
+        android:layout_alignBaseline="@+id/donationsTitleTextView"
+        android:layout_alignBottom="@+id/donationsTitleTextView"
+        android:layout_toEndOf="@+id/donationsTitleTextView"
+        android:layout_toRightOf="@+id/donationsTitleTextView"
         android:layout_below="@+id/titheFreeAmountTextView"
         android:textSize="20sp"/>
 
     <!-- Provisions Title -->
     <TextView
-        android:id="@+id/provisionsTextView"
+        android:id="@+id/provisionsTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_below="@+id/donationsTextView"
+        android:layout_below="@+id/donationsTitleTextView"
         android:textSize="20sp"
         android:text="@string/provisions"/>
 
@@ -98,8 +106,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_toEndOf="@+id/provisionsTextView"
-        android:layout_toRightOf="@+id/provisionsTextView"
+        android:layout_alignBaseline="@+id/provisionsTitleTextView"
+        android:layout_alignBottom="@+id/provisionsTitleTextView"
+        android:layout_toEndOf="@+id/provisionsTitleTextView"
+        android:layout_toRightOf="@+id/provisionsTitleTextView"
         android:layout_below="@+id/donationsAmountTextView"
         android:textSize="20sp"/>
+
 </RelativeLayout>

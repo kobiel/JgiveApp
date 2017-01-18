@@ -21,7 +21,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     // Incomes table creation
     private static final String CREATE_INCOMES_TABLE =
-            "CREATE TABLE " + Constants.Incomes.TABLE_NAME + " (" +
+            "CREATE TABLE IF NOT EXISTS " + Constants.Incomes.TABLE_NAME + " (" +
                     Constants.Incomes._ID +             " INTEGER PRIMARY KEY," +
                     Constants.Incomes.USER_NAME +       " TEXT," +
                     Constants.Incomes.SOURCE +          " TEXT," +
@@ -36,7 +36,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     // Expenses table creation
     private static final String CREATE_EXPENSES_TABLE =
-            "CREATE TABLE " + Constants.Expenses.TABLE_NAME + " (" +
+            "CREATE TABLE IF NOT EXISTS " + Constants.Expenses.TABLE_NAME + " (" +
                     Constants.Expenses._ID +             " INTEGER PRIMARY KEY," +
                     Constants.Expenses.USER_NAME +       " TEXT," +
                     Constants.Expenses.TARGET +          " TEXT," +
@@ -51,7 +51,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     // Donations table creation
     private static final String CREATE_DONATIONS_TABLE =
-            "CREATE TABLE " + Constants.Donations.TABLE_NAME + " (" +
+            "CREATE TABLE IF NOT EXISTS " + Constants.Donations.TABLE_NAME + " (" +
                     Constants.Donations._ID +             " INTEGER PRIMARY KEY," +
                     Constants.Donations.USER_NAME +       " TEXT," +
                     Constants.Donations.TARGET +          " TEXT," +
@@ -66,7 +66,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     // Provisions table creation
     private static final String CREATE_PROVISIONS_TABLE =
-            "CREATE TABLE " + Constants.Provisions.TABLE_NAME + " (" +
+            "CREATE TABLE IF NOT EXISTS " + Constants.Provisions.TABLE_NAME + " (" +
                     Constants.Provisions._ID +             " INTEGER PRIMARY KEY," +
                     Constants.Provisions.USER_NAME +       " TEXT," +
                     Constants.Provisions.YEAR +            " INTEGER" +
@@ -101,7 +101,7 @@ public class DBHandler extends SQLiteOpenHelper {
         onUpgrade(db, oldVersion, newVersion);
     }
 
-    public void addIncome(String user, String source, Double amount, int year, int month){
+    public boolean addIncome(String user, String source, Double amount, int year, int month){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -112,11 +112,19 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(Constants.Incomes.MONTH, month);
 
         // Inserting Row
-        db.insert(Constants.Incomes.TABLE_NAME, null, values);
-        db.close(); // Closing database connection
+        long rowInserted = db.insert(Constants.Incomes.TABLE_NAME, null, values);
+        // Closing database connection
+        db.close();
+        // Check if row inserted
+        if(rowInserted != -1) {
+            return true;
+        }//end if
+        else {
+            return false;
+        }//end else
     }
 
-    public void addExpense(String user, String target, Double amount, int year, int month){
+    public boolean addExpense(String user, String target, Double amount, int year, int month){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -127,11 +135,19 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(Constants.Expenses.MONTH, month);
 
         // Inserting Row
-        db.insert(Constants.Expenses.TABLE_NAME, null, values);
-        db.close(); // Closing database connection
+        long rowInserted = db.insert(Constants.Expenses.TABLE_NAME, null, values);
+        // Closing database connection
+        db.close();
+        // Check if row inserted
+        if(rowInserted != -1) {
+            return true;
+        }//end if
+        else {
+            return false;
+        }//end else
     }
 
-    public void addDonation(String user, String target, Double amount, int year, int month){
+    public boolean addDonation(String user, String target, Double amount, int year, int month){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -142,11 +158,19 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(Constants.Donations.MONTH, month);
 
         // Inserting Row
-        db.insert(Constants.Donations.TABLE_NAME, null, values);
-        db.close(); // Closing database connection
+        long rowInserted = db.insert(Constants.Donations.TABLE_NAME, null, values);
+        // Closing database connection
+        db.close();
+        // Check if row inserted
+        if(rowInserted != -1) {
+            return true;
+        }//end if
+        else {
+            return false;
+        }//end else
     }
 
-    public void addProvisions(String user, int year, int month, Double amount){
+    public boolean addProvisions(String user, int year, int month, Double amount){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -156,7 +180,15 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(Constants.Provisions.AMOUNT, amount);
 
         // Inserting Row
-        db.insert(Constants.Provisions.TABLE_NAME, null, values);
-        db.close(); // Closing database connection
+        long rowInserted = db.insert(Constants.Provisions.TABLE_NAME, null, values);
+        // Closing database connection
+        db.close();
+        // Check if row inserted
+        if(rowInserted != -1) {
+            return true;
+        }//end if
+        else {
+            return false;
+        }//end else
     }
 }

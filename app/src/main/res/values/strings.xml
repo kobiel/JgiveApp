@@ -2,12 +2,28 @@
     // App and activities names
     <string name="app_name">Jgive</string>
     <string name="title_activity_tithe">TitheActivity</string>
+    <string name="success">Great</string>
+    <string name="error_message">Something went wrong, Please try again or contact our support</string>
 
     // Tithe Activity
     <string name="incomes">Incomes</string>
     <string name="tithe_free">Tithe free expenses</string>
     <string name="donations">Donations</string>
     <string name="provisions">Provisions</string>
+
+    // Tithe Update Activity
+    <string-array name="types_array">
+        <item>Add an income</item>
+        <item>Add a tithe free expense</item>
+        <item>Add a donation</item>
+    </string-array>
+    <string name="source">Source</string>
+    <string name="sourceName">Source name</string>
+    <string name="target">Target</string>
+    <string name="targetName">Target name</string>
+    <string name="amount">Amount</string>
+    <string name="enterAmount">Enter the amount</string>
+    <string name="date">Date</string>
 
     // Login and Register Activities
     <string name="email">Email</string>
@@ -21,4 +37,5 @@
     <string name="jgive_logo">Jgive Logo</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_tithe_update">TitheUpdateActivity</string>
 </resources>
