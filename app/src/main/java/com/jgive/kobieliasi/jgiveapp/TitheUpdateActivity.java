@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -25,6 +26,7 @@ public class TitheUpdateActivity extends AppCompatActivity {
     final static int INCOME = 0;
     final static int EXPENSE = 1;
     final static int DONATION = 2;
+
     int type = 0;
     TextView srcTrgTitleTextView;
     EditText srcTrgNameEditText;
@@ -74,7 +76,6 @@ public class TitheUpdateActivity extends AppCompatActivity {
                         break;
                 }//end switch
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {}
         });
@@ -84,7 +85,7 @@ public class TitheUpdateActivity extends AppCompatActivity {
         datePicker.setMaxDate(new Date().getTime());
     }
 
-    protected void update() {
+    private void update() {
         // Get the title
         srcTrgNameEditText = (EditText)findViewById(R.id.srcTrgNameEditText);
         String title = srcTrgNameEditText.getText().toString();
@@ -122,11 +123,37 @@ public class TitheUpdateActivity extends AppCompatActivity {
 
         // Alerting the user of success or fail
         if (recordAdded) {
-            Toast.makeText(this, R.string.success, Toast.LENGTH_SHORT).show();
+            recordAdded = updateProvisions(type, year, month, Double.parseDouble(amount));
+            if (recordAdded) {
+                Toast.makeText(this, R.string.success, Toast.LENGTH_SHORT).show();
+            }//end if
+            else {
+                Toast.makeText(this, R.string.partial_success, Toast.LENGTH_SHORT).show();
+            }//end else
         }//end if
         else {
             Toast.makeText(this, R.string.error_message, Toast.LENGTH_SHORT).show();
         }//end else
-        System.out.print("Title is: " + title + "\nAmount is: " + amount + "\nYear is: " + year + "\nMonth is: " + month + "\n");
+    }
+
+    private boolean updateProvisions(int type, int year, int month, double amount) {
+        DBHandler dbHandler = new DBHandler(this);
+        ArrayList<String> provision = dbHandler.getProvisionForMonth("User", year, month);
+        // If no provision found in DB only add current
+        if (provision.size() == 0) {
+            return dbHandler.addProvisions("User", year, month, amount);
+        }//end if
+        String provisionID = provision.get(0);
+        String provisionAmount = provision.get(1);
+        double newProvisionAmount = 0;
+        switch (type) {
+            case INCOME:
+                newProvisionAmount = Double.valueOf(provisionAmount) + 0.1*amount;
+                break;
+            case EXPENSE:
+                newProvisionAmount = Double.valueOf(provisionAmount) - 0.1*amount;
+                break;
+        }//end switch
+        return dbHandler.updateProvisions(Integer.getInteger(provisionID), newProvisionAmount);
     }
 }

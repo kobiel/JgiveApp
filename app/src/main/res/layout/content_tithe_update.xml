@@ -30,6 +30,7 @@
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_below="@+id/inputRecordSpinner"
         android:textSize="20sp"
+        android:textStyle="bold"
         android:text="@string/source"/>
 
     <!-- Source/Target Name -->
@@ -37,6 +38,7 @@
         android:id="@+id/srcTrgNameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_alignBaseline="@+id/srcTrgTitleTextView"
@@ -51,10 +53,12 @@
         android:id="@+id/amountTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_below="@+id/srcTrgTitleTextView"
         android:textSize="20sp"
+        android:textStyle="bold"
         android:text="@string/amount"/>
 
     <!-- Tithe Free Amount -->
@@ -62,6 +66,7 @@
         android:id="@+id/amountEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_alignBaseline="@+id/amountTitleTextView"
@@ -78,10 +83,12 @@
         android:id="@+id/dateTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_below="@+id/amountTitleTextView"
         android:textSize="20sp"
+        android:textStyle="bold"
         android:text="@string/date"/>
 
     <DatePicker

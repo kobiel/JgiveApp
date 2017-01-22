@@ -3,9 +3,37 @@
     <string name="app_name">Jgive</string>
     <string name="title_activity_tithe">TitheActivity</string>
     <string name="success">Great</string>
+    <string name="partial_success">Something went wrong, but not all bad. Please try again or contact our support</string>
     <string name="error_message">Something went wrong, Please try again or contact our support</string>
 
     // Tithe Activity
+    <string-array name="years_array">
+        <item>Year</item>
+        <item>2017</item>
+        <item>2016</item>
+        <item>2015</item>
+        <item>2014</item>
+        <item>2013</item>
+        <item>2012</item>
+        <item>2011</item>
+        <item>2010</item>
+    </string-array>
+    <string-array name="months_array">
+        <item>Month</item>
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+    <string name="separator">/</string>
     <string name="incomes">Incomes</string>
     <string name="tithe_free">Tithe free expenses</string>
     <string name="donations">Donations</string>
@@ -13,9 +41,9 @@
 
     // Tithe Update Activity
     <string-array name="types_array">
-        <item>Add an income</item>
-        <item>Add a tithe free expense</item>
-        <item>Add a donation</item>
+        <item>Adding an income</item>
+        <item>Adding a tithe free expense</item>
+        <item>Adding a donation</item>
     </string-array>
     <string name="source">Source</string>
     <string name="sourceName">Source name</string>
