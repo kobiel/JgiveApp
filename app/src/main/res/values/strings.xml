@@ -2,7 +2,7 @@
     // App and activities names
     <string name="app_name">Jgive</string>
     <string name="title_activity_tithe">TitheActivity</string>
-    <string name="success">Great</string>
+    <string name="success">Great!</string>
     <string name="partial_success">Something went wrong, but not all bad. Please try again or contact our support</string>
     <string name="error_message">Something went wrong, Please try again or contact our support</string>
 

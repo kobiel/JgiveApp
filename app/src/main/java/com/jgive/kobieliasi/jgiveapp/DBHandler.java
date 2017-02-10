@@ -348,6 +348,7 @@ public class DBHandler extends SQLiteOpenHelper {
         );
         ArrayList<String> list = new ArrayList<>();
         if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToNext();
             list.add(cursor.getString(0));
             list.add(cursor.getString(1));
         }//end if
