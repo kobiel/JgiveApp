@@ -137,23 +137,26 @@ public class TitheUpdateActivity extends AppCompatActivity {
     }
 
     private boolean updateProvisions(int type, int year, int month, double amount) {
-        DBHandler dbHandler = new DBHandler(this);
-        ArrayList<String> provision = dbHandler.getProvisionForMonth("User", year, month);
-        // If no provision found in DB only add current
-        if (provision.size() == 0) {
-            return dbHandler.addProvisions("User", year, month, amount);
-        }//end if
-        String provisionID = provision.get(0);
-        String provisionAmount = provision.get(1);
-        double newProvisionAmount = 0;
+        double newAmount = 0;
         switch (type) {
             case INCOME:
-                newProvisionAmount = Double.valueOf(provisionAmount) + 0.1*amount;
+                newAmount = 0.1*amount;
                 break;
             case EXPENSE:
-                newProvisionAmount = Double.valueOf(provisionAmount) - 0.1*amount;
+                newAmount = -0.1*amount;
                 break;
         }//end switch
-        return dbHandler.updateProvisions(Integer.getInteger(provisionID), newProvisionAmount);
+        DBHandler dbHandler = new DBHandler(this);
+        ArrayList<String> provision = dbHandler.getProvisionForMonth("User", year, month+1);
+        // If no provision found in DB only add current
+        if (provision.size() == 0) {
+            return dbHandler.addProvisions("User", year, month, newAmount);
+        }//end if
+        else {
+            String provisionID = provision.get(0);
+            String provisionAmount = provision.get(1);
+            double newProvisionAmount = Double.valueOf(provisionAmount) + newAmount;
+            return dbHandler.updateProvisions(Integer.valueOf(provisionID), newProvisionAmount);
+        }//end else
     }
 }

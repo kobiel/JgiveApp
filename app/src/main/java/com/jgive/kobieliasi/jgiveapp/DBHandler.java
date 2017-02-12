@@ -211,8 +211,8 @@ public class DBHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(Constants.Provisions.AMOUNT, amount);
         // WHERE clause
-        String whereClause = Constants.Provisions.AMOUNT + " = ?";
-        String[] whereArgs = { String.valueOf(amount) };
+        String whereClause = Constants.Provisions._ID + " = ?";
+        String[] whereArgs = { String.valueOf(id) };
 
         // Updating Row id and get if raw affected
         int rowAffected = db.update(Constants.Provisions.TABLE_NAME, values, whereClause, whereArgs);

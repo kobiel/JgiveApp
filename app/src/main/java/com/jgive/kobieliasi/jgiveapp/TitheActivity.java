@@ -91,6 +91,12 @@ public class TitheActivity extends AppCompatActivity {
         provisionTextView = (TextView)findViewById(R.id.provisionsAmountTextView);
     }
 
+    @Override
+    protected void onRestart(){
+        super.onRestart();
+        createLists();
+
+    }
     private void createLists(){
         if (yearPosition.equals("Year") || monthPosition == 0){
             return;
