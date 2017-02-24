@@ -4,6 +4,7 @@ import android.provider.BaseColumns;
 
 /**
  * Created by Kobi Eliasi on 07/01/2017.
+ * Constants for DB
  */
 final class Constants {
     private Constants(){

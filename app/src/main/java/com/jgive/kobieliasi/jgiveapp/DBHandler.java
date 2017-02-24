@@ -14,11 +14,6 @@ import java.util.ArrayList;
 
 public class DBHandler extends SQLiteOpenHelper {
 
-    final static int INCOME = 0;
-    final static int EXPENSE = 1;
-    final static int DONATION = 2;
-    final static int PROVISION = 3;
-
     // Database Version
     private static final int DATABASE_VERSION = 1;
     // Database Name
@@ -352,40 +347,6 @@ public class DBHandler extends SQLiteOpenHelper {
             list.add(cursor.getString(0));
             list.add(cursor.getString(1));
         }//end if
-
-        // Closing database connection
-        cursor.close();
-        db.close();
-        return list;
-    }
-
-    protected ArrayList<String> getYears(String user){
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        // Define a projection that specifies which columns from the database to use
-        String [] projection = {Constants.Incomes.YEAR};
-        // Filter results WHERE
-        String selection = Constants.Provisions.USER_NAME + " = ?";
-        String[] selectionArgs = { user };
-        // Distinct
-        boolean distinct = true;
-        String groupBy = Constants.Incomes.YEAR;
-
-        Cursor cursor = db.query(
-                distinct,
-                Constants.Provisions.TABLE_NAME,    //The table to query
-                projection,                         //The columns to return
-                selection,                          //The columns for the WHERE clause
-                selectionArgs,                      //The values for the WHERE clause
-                groupBy,                            //Group the rows
-                null,                               //Filter by row groups
-                null,                               //The sort order
-                null                                //The limit
-        );
-        ArrayList<String> list = new ArrayList<>();
-        while(cursor.moveToNext()) {
-            list.add(cursor.getString(0));
-        }//end while
 
         // Closing database connection
         cursor.close();

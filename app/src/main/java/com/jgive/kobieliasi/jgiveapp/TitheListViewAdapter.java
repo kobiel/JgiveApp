@@ -12,6 +12,7 @@ import java.util.StringTokenizer;
 
 /**
  * Created by Kobi Eliasi on 21/01/2017.
+ * Tithe List View Adapter
  */
 
 public class TitheListViewAdapter extends ArrayAdapter {

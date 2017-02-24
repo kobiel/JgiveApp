@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             public void run() {
-                startActivity(new Intent(MainActivity.this, TitheActivity.class));
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
             }
         }, 5*second);
     }
