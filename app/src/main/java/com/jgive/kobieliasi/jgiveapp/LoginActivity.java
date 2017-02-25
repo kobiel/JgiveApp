@@ -6,12 +6,16 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 
 /**
  * Created by Kobi Eliasi on 31/12/2016.
  * Login Activity
  */
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+
+    Button loginButton;
+    Button registerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,22 @@ public class LoginActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        loginButton = (Button)findViewById(R.id.loginButton);
+        registerButton = (Button)findViewById(R.id.registerButton);
+        loginButton.setOnClickListener(this);
+        registerButton.setOnClickListener(this);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.loginButton:
+                // TODO: check login details
+                break;
+            case R.id.registerButton:
+                // TODO: send user details
+                break;
+        }//end switch
+    }
 }

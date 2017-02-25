@@ -70,16 +70,71 @@
         android:hint="@string/enterPassword"
         android:inputType="textPassword"/>
 
-    <!-- Login button -->
-    <Button
-        android:id="@+id/loginButton"
+    <!-- Login Title -->
+    <TextView
+        android:id="@+id/loginTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_centerHorizontal="true"
         android:layout_below="@+id/passwordTextView"
         android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="@string/login_message"/>
+
+    <!-- Login button -->
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_below="@+id/loginTextView"
+        android:textSize="20sp"
         android:text="@string/login"/>
+
+    <!-- Register Title -->
+    <TextView
+        android:id="@+id/registerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/loginButton"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="@string/register_message"/>
+
+    <!-- Register button -->
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_below="@+id/registerTextView"
+        android:textSize="20sp"
+        android:text="@string/register"/>
+
+    <!-- Facebook Title -->
+    <TextView
+        android:id="@+id/facebookTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/registerButton"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="@string/facebook_message"/>
+
+    <!-- Facebook logo -->
+    <android.support.v7.widget.AppCompatImageButton
+        android:id="@+id/facebookLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/facebookTextView"
+        android:src="@drawable/facebook_logo_58"
+        android:background="?attr/selectableItemBackgroundBorderless"/>
 
 </RelativeLayout>

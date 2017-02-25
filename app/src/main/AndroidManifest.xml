@@ -17,21 +17,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TitheActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".RegisterActivity"
-            android:label="@string/title_activity_register"
+            android:name=".TitheActivity"
+            android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".TitheUpdateActivity"
             android:label="@string/title_activity_tithe_update"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
