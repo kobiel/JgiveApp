@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -33,6 +35,33 @@ public class TitheActivity extends AppCompatActivity {
     ArrayAdapter<String> donationsAdapter;
 
     TextView provisionTextView;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_home:
+                startActivity(new Intent(TitheActivity.this, HomeActivity.class));
+                return true;
+            case R.id.action_search:
+                ;
+                return true;
+            case R.id.action_profile:
+                ;
+                return true;
+            case R.id.action_tithe_calculator:
+                startActivity(new Intent(TitheActivity.this, TitheActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }//end switch
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,8 +124,8 @@ public class TitheActivity extends AppCompatActivity {
     protected void onRestart(){
         super.onRestart();
         createLists();
-
     }
+
     private void createLists(){
         if (yearPosition.equals("Year") || monthPosition == 0){
             return;

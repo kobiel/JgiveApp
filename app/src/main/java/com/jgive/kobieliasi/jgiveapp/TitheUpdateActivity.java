@@ -1,9 +1,12 @@
 package com.jgive.kobieliasi.jgiveapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,6 +37,33 @@ public class TitheUpdateActivity extends AppCompatActivity {
     DatePicker datePicker;
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_home:
+                startActivity(new Intent(TitheUpdateActivity.this, HomeActivity.class));
+                return true;
+            case R.id.action_search:
+                ;
+                return true;
+            case R.id.action_profile:
+                ;
+                return true;
+            case R.id.action_tithe_calculator:
+                startActivity(new Intent(TitheUpdateActivity.this, TitheActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }//end switch
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tithe_update);
@@ -59,18 +89,16 @@ public class TitheUpdateActivity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                srcTrgTitleTextView = (TextView)findViewById(R.id.srcTrgTitleTextView);
+                srcTrgNameEditText = (EditText)findViewById(R.id.srcTrgNameEditText);
                 type = position;
                 switch (type) {
                     case INCOME:
-                        srcTrgTitleTextView = (TextView)findViewById(R.id.srcTrgTitleTextView);
-                        srcTrgNameEditText = (EditText)findViewById(R.id.srcTrgNameEditText);
                         srcTrgTitleTextView.setText(R.string.source);
                         srcTrgNameEditText.setHint(R.string.sourceName);
                         break;
                     case EXPENSE:
                     case DONATION:
-                        srcTrgTitleTextView = (TextView)findViewById(R.id.srcTrgTitleTextView);
-                        srcTrgNameEditText = (EditText)findViewById(R.id.srcTrgNameEditText);
                         srcTrgTitleTextView.setText(R.string.target);
                         srcTrgNameEditText.setHint(R.string.targetName);
                         break;
@@ -94,10 +122,12 @@ public class TitheUpdateActivity extends AppCompatActivity {
         amountEditText = (EditText)findViewById(R.id.amountEditText);
         String amount = amountEditText.getText().toString();
 
+        // Check if all fields are full
         if (title.isEmpty() || amount.isEmpty()) {
             System.out.print("Please enter all data");
             return;
         }//end if
+
         // Get the year and month
         int year = datePicker.getYear();
         int month = datePicker.getMonth();
@@ -146,8 +176,10 @@ public class TitheUpdateActivity extends AppCompatActivity {
                 newAmount = -0.1*amount;
                 break;
         }//end switch
+
         DBHandler dbHandler = new DBHandler(this);
         ArrayList<String> provision = dbHandler.getProvisionForMonth("User", year, month+1);
+
         // If no provision found in DB only add current
         if (provision.size() == 0) {
             return dbHandler.addProvisions("User", year, month, newAmount);
