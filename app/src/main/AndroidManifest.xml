@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jgive.kobieliasi.jgiveapp">
 
+    <!-- Internet permission -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,16 +20,24 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".HomeActivity"
+            android:label="@string/title_activity_home"
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".TitheActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_tithe"
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".TitheUpdateActivity"
             android:label="@string/title_activity_tithe_update"
+            android:launchMode="singleInstance"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 

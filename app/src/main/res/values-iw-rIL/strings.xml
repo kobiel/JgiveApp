@@ -1,0 +1,75 @@
+<resources>
+    // App and activities names
+    <string name="app_name">Jgive</string>
+    <string name="title_activity_home">Jgive</string>
+    <string name="title_activity_login">התחברות</string>
+    <string name="title_activity_tithe">מחשבון מעשר</string>
+    <string name="title_activity_tithe_update">עדכון מעשר</string>
+
+    <string name="success">נפלא!</string>
+    <string name="partial_success">משהו השתבש, אבל לא הכל נורא. אנא נסה שוב או פנה לתמיכה</string>
+    <string name="error_message">משהו השתבש, אנא נסה שוב או פנה לתמיכה</string>
+
+    <string name="tithe_calculator">מחשבון מעשר</string>
+
+    // Tithe Activity
+    <string-array name="years_array">
+        <item>שנה</item>
+        <item>2017</item>
+        <item>2016</item>
+        <item>2015</item>
+        <item>2014</item>
+        <item>2013</item>
+        <item>2012</item>
+        <item>2011</item>
+        <item>2010</item>
+    </string-array>
+    <string-array name="months_array">
+        <item>חודש</item>
+        <item>ינואר</item>
+        <item>פברואר</item>
+        <item>מרץ</item>
+        <item>אפריל</item>
+        <item>מאי</item>
+        <item>יוני</item>
+        <item>יולי</item>
+        <item>אוגוסט</item>
+        <item>ספטמבר</item>
+        <item>אוקטובר</item>
+        <item>נובמבר</item>
+        <item>דצמבר</item>
+    </string-array>
+    <string name="separator">/</string>
+    <string name="incomes">הכנסות</string>
+    <string name="tithe_free">Tithe free expenses</string>
+    <string name="donations">תרומות</string>
+    <string name="provisions">הפרשות</string>
+
+    // Tithe Update Activity
+    <string-array name="types_array">
+        <item>הוסף הכנסה</item>
+        <item>הוסף הוצאה פטורה</item>
+        <item>הוסף תרומה</item>
+    </string-array>
+    <string name="source">מקור</string>
+    <string name="sourceName">שם המקור</string>
+    <string name="target">מטרה</string>
+    <string name="targetName">שם המטרה</string>
+    <string name="amount">סכום</string>
+    <string name="enterAmount">הכנס את הסכום</string>
+    <string name="date">תאריך</string>
+
+    // Login and Register Activities
+    <string name="email">דוא"ל</string>
+    <string name="enterEmail">הכנס את הדוא"ל שלך</string>
+    <string name="password">סיסמה</string>
+    <string name="enterPassword">לדוגמא X8df!90EO</string>
+    <string name="login">התחבר</string>
+    <string name="register">הירשם</string>
+    <string name="login_message">כבר רשום ב-Jgive?</string>
+    <string name="register_message">פעם ראשונה ב-Jgive?</string>
+    <string name="facebook_message">כנס בקלות עם פייסבוק</string>
+
+    // Content Description
+    <string name="jgive_logo">Jgive סמל</string>
+</resources>

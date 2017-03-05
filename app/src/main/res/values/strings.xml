@@ -1,11 +1,16 @@
 <resources>
     // App and activities names
     <string name="app_name">Jgive</string>
-    <string name="title_activity_tithe">TitheActivity</string>
+    <string name="title_activity_home">Jgive</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_tithe">Tithe calculator</string>
+    <string name="title_activity_tithe_update">Tithe Update</string>
 
     <string name="success">Great!</string>
     <string name="partial_success">Something went wrong, but not all bad. Please try again or contact our support</string>
     <string name="error_message">Something went wrong, Please try again or contact our support</string>
+
+    <string name="tithe_calculator">Tithe Calculator</string>
 
     // Tithe Activity
     <string-array name="years_array">
@@ -67,6 +72,4 @@
 
     // Content Description
     <string name="jgive_logo">Jgive Logo</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="title_activity_tithe_update">TitheUpdateActivity</string>
 </resources>

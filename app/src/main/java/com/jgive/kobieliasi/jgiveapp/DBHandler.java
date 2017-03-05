@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 /**
  * Created by Kobi Eliasi on 07/01/2017.
+ * local SQLite DB handler
  */
 
 public class DBHandler extends SQLiteOpenHelper {

@@ -7,6 +7,7 @@ import android.provider.BaseColumns;
  * Constants for DB
  */
 final class Constants {
+
     private Constants(){
         throw new AssertionError("Can't create constants");
     }
