@@ -5,6 +5,9 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.facebook.AccessToken;
+import com.facebook.Profile;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -37,9 +40,19 @@ public class MainActivity extends AppCompatActivity {
         String email = sharedPreferences.getString("login_email", "");
         String password = sharedPreferences.getString("login_password", "");
 
-        if (!email.equals("") && !password.equals("")) {
-            //TODO: try to connect to the server and confirm the credentials
+        if (Profile.getCurrentProfile() != null && AccessToken.getCurrentAccessToken() != null) {
+            // Logged via facebook
             loginTimerTask.cancel();
+            //TODO: get the user details
+            timer.schedule(new TimerTask() {
+                public void run() {
+                    startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                }
+            }, 4*second);
+        }//end if
+        else if (!email.equals("") && !password.equals("")) {
+            loginTimerTask.cancel();
+            //TODO: try to connect to the server and confirm the credentials
             timer.schedule(new TimerTask() {
                 public void run() {
                     startActivity(new Intent(MainActivity.this, HomeActivity.class));

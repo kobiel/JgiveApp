@@ -127,14 +127,13 @@
         android:text="@string/facebook_message"/>
 
     <!-- Facebook logo -->
-    <android.support.v7.widget.AppCompatImageButton
-        android:id="@+id/facebookLogo"
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/facebook_login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/facebookTextView"
-        android:src="@drawable/facebook_logo_58"
-        android:background="?attr/selectableItemBackgroundBorderless"/>
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/facebookTextView"/>
 
 </RelativeLayout>

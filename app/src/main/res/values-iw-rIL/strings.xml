@@ -69,6 +69,8 @@
     <string name="login_message">כבר רשום ב-Jgive?</string>
     <string name="register_message">פעם ראשונה ב-Jgive?</string>
     <string name="facebook_message">כנס בקלות עם פייסבוק</string>
+    <string name="facebook_app_id">609001459303889</string>
+    
 
     // Content Description
     <string name="jgive_logo">Jgive סמל</string>
