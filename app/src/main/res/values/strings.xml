@@ -44,6 +44,7 @@
     <string name="tithe_free">Tithe free expenses</string>
     <string name="donations">Donations</string>
     <string name="provisions">Provisions</string>
+    <string name="balance">Balance</string>
 
     // Tithe Update Activity
     <string-array name="types_array">
@@ -71,6 +72,8 @@
     <string name="facebook_message">Use easy access with Facebook</string>
     <string name="facebook_app_id">609001459303889</string>
     <string name="fb_login_protocol_scheme">fb609001459303889</string>
+
+    <string name="welcome">Welcome to Jgive</string>
 
     // Content Description
     <string name="jgive_logo">Jgive Logo</string>

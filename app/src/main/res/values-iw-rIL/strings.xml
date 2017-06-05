@@ -44,6 +44,7 @@
     <string name="tithe_free">Tithe free expenses</string>
     <string name="donations">תרומות</string>
     <string name="provisions">הפרשות</string>
+    <string name="balance">מאזן</string>
 
     // Tithe Update Activity
     <string-array name="types_array">
@@ -70,7 +71,8 @@
     <string name="register_message">פעם ראשונה ב-Jgive?</string>
     <string name="facebook_message">כנס בקלות עם פייסבוק</string>
     <string name="facebook_app_id">609001459303889</string>
-    
+
+    <string name="welcome">ברוך הבא ל-Jgive</string>
 
     // Content Description
     <string name="jgive_logo">Jgive סמל</string>

@@ -13,4 +13,16 @@
     tools:context="com.jgive.kobieliasi.jgiveapp.HomeActivity"
     tools:showIn="@layout/activity_home">
 
+    <!-- Welcome Title -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="@string/welcome"/>
+
+
 </RelativeLayout>

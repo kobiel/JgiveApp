@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         if (Profile.getCurrentProfile() != null && AccessToken.getCurrentAccessToken() != null) {
             // Logged via facebook
             loginTimerTask.cancel();
-            //TODO: get the user details
+            //TODO: get the user details from facebook
             timer.schedule(new TimerTask() {
                 public void run() {
                     startActivity(new Intent(MainActivity.this, HomeActivity.class));

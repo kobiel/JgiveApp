@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        // Set the facebook login
+        // Set the facebook login button
         facebookLoginButton = (LoginButton) findViewById(R.id.facebook_login_button);
         // Register the callback for the facebook login
         facebookLoginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -93,6 +93,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         sharedPreferences = getSharedPreferences("jgiveDataFile", MODE_PRIVATE);
     }
 
+    //  Getting the login result from facebook
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

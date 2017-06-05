@@ -3,6 +3,7 @@ package com.jgive.kobieliasi.jgiveapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -17,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 /**
  * Created by Kobi Eliasi on 24/12/2016.
@@ -35,6 +37,7 @@ public class TitheActivity extends AppCompatActivity {
     ArrayAdapter<String> donationsAdapter;
 
     TextView provisionTextView;
+    TextView balanceTextView;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -118,6 +121,7 @@ public class TitheActivity extends AppCompatActivity {
         donationsList = (ListView)findViewById(R.id.donationsListView);
 
         provisionTextView = (TextView)findViewById(R.id.provisionsAmountTextView);
+        balanceTextView = (TextView)findViewById(R.id.balanceAmountTextView);
     }
 
     @Override
@@ -153,12 +157,34 @@ public class TitheActivity extends AppCompatActivity {
         setListViewHeight(expensesList);
         setListViewHeight(donationsList);
 
-        // Set the provision in the text view
+        // Get the total donations amount to calculate the balance
+        double totalDonations = 0;
+        if (donations.size() > 0) {
+            for (int i = 0; i < donations.size(); i++) {
+                StringTokenizer tokens = new StringTokenizer(donations.get(i), ";");
+                tokens.nextToken();
+                totalDonations += Double.parseDouble(tokens.nextToken());
+            }//end for
+        }//end if
+
+        // Get colors
+        int redColor = ResourcesCompat.getColor(getResources(), R.color.red, getTheme());
+        int greenColor = ResourcesCompat.getColor(getResources(), R.color.green, getTheme());
+        // Set the provision and balance in the text view
         if (provisions.size() > 0) {
             provisionTextView.setText(provisions.get(1));
+            double balance = Double.parseDouble(provisions.get(1)) - totalDonations;
+            balanceTextView.setText(String.valueOf(balance));
+            if (balance < 0) {
+                balanceTextView.setTextColor(redColor);
+            }//end else
+            else {
+                balanceTextView.setTextColor(greenColor);
+            }//end else
         }//end if
         else {
             provisionTextView.setText("");
+            balanceTextView.setText("");
         }//end else
     }
 
