@@ -25,7 +25,6 @@ public class TitheListViewAdapter extends ArrayAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
-        View v = convertView;
         if (convertView == null) {
             LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = vi.inflate(R.layout.list_tithe, null);

@@ -17,6 +17,8 @@ import org.json.JSONObject;
 /**
  * Created by Kobi Eliasi on 25/02/2017.
  * Access to the data on jgive's server
+ * Updated by Kobi Eliasi on 13/06/2017.
+ * Add getOrganizations functions
  */
 
 public class DataAccess {
@@ -29,35 +31,6 @@ public class DataAccess {
     public DataAccess(Context context) {
         this.context = context;
         mRequestQueue = Volley.newRequestQueue(context);
-    }
-
-    public boolean login(String email, String password) {
-        progressDialog = ProgressDialog.show(context, "Connecting", "Please wait", true);
-        String URL = JGIVE_URL + "/login/" + email + "/" + password;
-        // Request a Json response from the provided URL.
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        // Check if the login failed
-                        if (response.isNull("Error")) {
-
-                        }//end if
-                        else {
-
-                        }//end else
-                        progressDialog.dismiss();
-                    }//end onResponse
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
-                Toast.makeText(context, context.getString(R.string.error_message), Toast.LENGTH_LONG).show();
-            }//end onErrorResponse
-        });
-        // Add the request to the RequestQueue.
-        mRequestQueue.add(request);
-        return false;
     }
 
     public boolean register(String email, String password) {
@@ -89,5 +62,62 @@ public class DataAccess {
         return false;
     }
 
+    public boolean login(String email, String password) {
+        progressDialog = ProgressDialog.show(context, "Connecting", "Please wait", true);
+        String URL = JGIVE_URL + "/login/" + email + "/" + password;
+        // Request a Json response from the provided URL.
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // Check if the login failed
+                        if (response.isNull("Error")) {
+
+                        }//end if
+                        else {
+
+                        }//end else
+                        progressDialog.dismiss();
+                    }//end onResponse
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                Toast.makeText(context, context.getString(R.string.error_message), Toast.LENGTH_LONG).show();
+            }//end onErrorResponse
+        });
+        // Add the request to the RequestQueue.
+        mRequestQueue.add(request);
+        return false;
+    }
+
+    public boolean getOrganizations() {
+        progressDialog = ProgressDialog.show(context, "Updating", "Please wait", true);
+        String URL = JGIVE_URL + "/organizations/";
+        // Request a Json response from the provided URL.
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // Check if the request failed
+                        if (response.isNull("Error")) {
+                            //TODO: case of no data
+                        }//end if
+                        else {
+                            //TODO: case of data
+                        }//end else
+                        progressDialog.dismiss();
+                    }//end onResponse
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                Toast.makeText(context, context.getString(R.string.error_message), Toast.LENGTH_LONG).show();
+            }//end onErrorResponse
+        });
+        // Add the request to the RequestQueue.
+        mRequestQueue.add(request);
+        return false;
+    }
 
 }
