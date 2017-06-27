@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         if (Profile.getCurrentProfile() != null && AccessToken.getCurrentAccessToken() != null) {
             // Logged via facebook
             loginTimerTask.cancel();
-            //TODO: get the user details from facebook
             timer.schedule(new TimerTask() {
                 public void run() {
                     startActivity(new Intent(MainActivity.this, HomeActivity.class));
@@ -52,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         }//end if
         else if (!email.equals("") && !password.equals("")) {
             loginTimerTask.cancel();
-            //TODO: try to connect to the server and confirm the credentials
+            // TODO: try to connect to the server and confirm the credentials
             timer.schedule(new TimerTask() {
                 public void run() {
                     startActivity(new Intent(MainActivity.this, HomeActivity.class));

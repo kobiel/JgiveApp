@@ -37,10 +37,10 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(new Intent(HomeActivity.this, HomeActivity.class));
                 return true;
             case R.id.action_search:
-                ;
+                //startActivity(new Intent(HomeActivity.this, SearchActivity.class));
                 return true;
             case R.id.action_profile:
-                ;
+                startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
                 return true;
             case R.id.action_tithe_calculator:
                 startActivity(new Intent(HomeActivity.this, TitheActivity.class));

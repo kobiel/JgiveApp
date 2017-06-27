@@ -5,7 +5,11 @@
     <string name="title_activity_login">Login</string>
     <string name="title_activity_tithe">Tithe calculator</string>
     <string name="title_activity_tithe_update">Tithe Update</string>
+    <string name="title_activity_profile">Your Profile</string>
+    <string name="title_activity_update_profile">Update Your Profile</string>
 
+    // Messages
+    <string name="welcome">Welcome to Jgive</string>
     <string name="success">Great!</string>
     <string name="partial_success">Something went wrong, but not all bad. Please try again or contact our support</string>
     <string name="error_message">Something went wrong, Please try again or contact our support</string>
@@ -60,7 +64,7 @@
     <string name="enterAmount">Enter the amount</string>
     <string name="date">Date</string>
 
-    // Login and Register Activities
+    // Login Activity
     <string name="email">Email</string>
     <string name="enterEmail">Enter your email</string>
     <string name="password">Password</string>
@@ -73,7 +77,15 @@
     <string name="facebook_app_id">609001459303889</string>
     <string name="fb_login_protocol_scheme">fb609001459303889</string>
 
-    <string name="welcome">Welcome to Jgive</string>
+    //Profile Activity
+    <string name="hello">Hello</string>
+    <string name="firstName">First Name</string>
+    <string name="lastName">Last Name</string>
+    <string name="title">Title</string>
+    <string name="country">Country</string>
+    <string name="biography">Biography</string>
+    <string name="website">Website</string>
+    <string name="monthlyUpdate">Monthly Update</string>
 
     // Content Description
     <string name="jgive_logo">Jgive Logo</string>

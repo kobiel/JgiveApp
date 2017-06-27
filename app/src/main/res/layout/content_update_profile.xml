@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.jgive.kobieliasi.jgiveapp.UpdateProfileActivity"
+    tools:showIn="@layout/activity_update_profile">
+
+    <RelativeLayout
+        android:id="@+id/contentUpdateProfileRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <!-- User's profile picture -->
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/profileNetworkImageView"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+        <!-- Welcome Title -->
+        <TextView
+            android:id="@+id/helloTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_toRightOf="@+id/profileNetworkImageView"
+            android:layout_toEndOf="@+id/profileNetworkImageView"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/hello"/>
+
+        <!-- First Name Title -->
+        <TextView
+            android:id="@+id/firstNameTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_below="@+id/profileNetworkImageView"
+            android:textSize="18sp"
+            android:text="@string/firstName"/>
+
+        <!-- First Name -->
+        <EditText
+            android:id="@+id/firstNameEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_below="@+id/profileNetworkImageView"
+            android:layout_toRightOf="@+id/monthlyUpdateTitleTextView"
+            android:layout_toEndOf="@+id/monthlyUpdateTitleTextView"
+            android:layout_alignBaseline="@+id/firstNameTitleTextView"
+            android:textSize="18sp"/>
+
+        <!-- Last Name Title -->
+        <TextView
+            android:id="@+id/lastNameTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_below="@+id/firstNameEditText"
+            android:textSize="18sp"
+            android:text="@string/lastName"/>
+
+        <!-- Last Name -->
+        <EditText
+            android:id="@+id/lastNameEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_below="@+id/firstNameEditText"
+            android:layout_toRightOf="@+id/monthlyUpdateTitleTextView"
+            android:layout_toEndOf="@+id/monthlyUpdateTitleTextView"
+            android:layout_alignBaseline="@+id/lastNameTitleTextView"
+            android:textSize="18sp"/>
+
+        <!-- Title Title -->
+        <TextView
+            android:id="@+id/titleTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_below="@+id/lastNameEditText"
+            android:textSize="18sp"
+            android:text="@string/title"/>
+
+        <!-- Title -->
+        <EditText
+            android:id="@+id/titleEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_below="@+id/lastNameEditText"
+            android:layout_toRightOf="@+id/monthlyUpdateTitleTextView"
+            android:layout_toEndOf="@+id/monthlyUpdateTitleTextView"
+            android:layout_alignBaseline="@+id/titleTitleTextView"
+            android:textSize="18sp"/>
+
+        <!-- Country Title -->
+        <TextView
+            android:id="@+id/countryTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_below="@+id/titleEditText"
+            android:textSize="18sp"
+            android:text="@string/country"/>
+
+        <!-- Country -->
+        <EditText
+            android:id="@+id/countryEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_below="@+id/titleEditText"
+            android:layout_toRightOf="@+id/monthlyUpdateTitleTextView"
+            android:layout_toEndOf="@+id/monthlyUpdateTitleTextView"
+            android:layout_alignBaseline="@+id/countryTitleTextView"
+            android:textSize="18sp"/>
+
+        <!-- Biography Title -->
+        <TextView
+            android:id="@+id/biographyTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_below="@+id/countryEditText"
+            android:textSize="18sp"
+            android:text="@string/biography"/>
+
+        <!-- Biography -->
+        <EditText
+            android:id="@+id/biographyEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_below="@+id/countryEditText"
+            android:layout_toRightOf="@+id/monthlyUpdateTitleTextView"
+            android:layout_toEndOf="@+id/monthlyUpdateTitleTextView"
+            android:layout_alignBaseline="@+id/biographyTitleTextView"
+            android:textSize="18sp"/>
+
+        <!-- Website Title -->
+        <TextView
+            android:id="@+id/websiteTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_below="@+id/biographyEditText"
+            android:textSize="18sp"
+            android:text="@string/website"/>
+
+        <!-- Website -->
+        <EditText
+            android:id="@+id/websiteEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_below="@+id/biographyEditText"
+            android:layout_toRightOf="@+id/monthlyUpdateTitleTextView"
+            android:layout_toEndOf="@+id/monthlyUpdateTitleTextView"
+            android:layout_alignBaseline="@+id/websiteTitleTextView"
+            android:textSize="18sp" />
+
+        <!-- Monthly update Title -->
+        <TextView
+            android:id="@+id/monthlyUpdateTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_below="@+id/websiteEditText"
+            android:textSize="18sp"
+            android:text="@string/monthlyUpdate"/>
+
+        <!-- Monthly update -->
+        <EditText
+            android:id="@+id/monthlyUpdateEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_below="@+id/websiteEditText"
+            android:layout_toRightOf="@+id/monthlyUpdateTitleTextView"
+            android:layout_toEndOf="@+id/monthlyUpdateTitleTextView"
+            android:layout_alignBaseline="@+id/monthlyUpdateTitleTextView"
+            android:textSize="18sp"/>
+
+    </RelativeLayout>
+
+</ScrollView>

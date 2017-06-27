@@ -18,9 +18,16 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Arrays;
 
 /**
  * Created by Kobi Eliasi on 31/12/2016.
@@ -61,20 +68,42 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         // Set the facebook login button
         facebookLoginButton = (LoginButton) findViewById(R.id.facebook_login_button);
+        facebookLoginButton.setReadPermissions(Arrays.asList("public_profile", "email", "user_website"));
         // Register the callback for the facebook login
         facebookLoginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Log.d("Login", "facebook:onSuccess:" + loginResult);
+                Log.d("LoginActivity", "facebook:onSuccess:" + loginResult);
+                GraphRequest request = GraphRequest.newMeRequest(
+                        loginResult.getAccessToken(),
+                        new GraphRequest.GraphJSONObjectCallback() {
+                            @Override
+                            public void onCompleted(JSONObject object, GraphResponse response) {
+                                Log.d("LoginActivity", response.toString());
+                                try {
+                                    String email = object.getString("email");
+                                    sharedPreferences.edit().putString("login_email", email).apply();
+                                    sharedPreferences.edit().putString("login_via", "facebook").apply();
+                                }// end try
+                                catch (JSONException e) {
+                                    Log.d("LoginActivity", e.toString());
+                                }//end catch
+                            }
+                        });
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "id,email");
+                request.setParameters(parameters);
+                request.executeAsync();
+                // Open the home screen
                 startActivity(new Intent(LoginActivity.this, HomeActivity.class));
             }
             @Override
             public void onCancel() {
-                Log.d("Login", "facebook:onCancel");
+                Log.d("LoginActivity", "facebook:onCancel");
             }
             @Override
             public void onError(FacebookException exception) {
-                Log.d("Login", "facebook:onError", exception);
+                Log.d("LoginActivity", "facebook:onError", exception);
             }
         });
 
@@ -110,6 +139,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     if (dataAccess.login(email, password)) {
                         sharedPreferences.edit().putString("login_email", email).apply();
                         sharedPreferences.edit().putString("login_password", password).apply();
+                        sharedPreferences.edit().putString("login_via", "jgive").apply();
+                        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                     }//end if
                 }//end if
                 break;
@@ -118,6 +149,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     if (dataAccess.register(email, password)) {
                         sharedPreferences.edit().putString("login_email", email).apply();
                         sharedPreferences.edit().putString("login_password", password).apply();
+                        sharedPreferences.edit().putString("login_via", "jgive").apply();
+                        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                     }//end if
                 }//end if
                 break;

@@ -5,7 +5,11 @@
     <string name="title_activity_login">התחברות</string>
     <string name="title_activity_tithe">מחשבון מעשר</string>
     <string name="title_activity_tithe_update">עדכון מעשר</string>
+    <string name="title_activity_profile">הפרופיל שלך</string>
+    <string name="title_activity_update_profile">עדכון הפרופיל</string>
 
+    // Messages
+    <string name="welcome">ברוך הבא ל-Jgive</string>
     <string name="success">נפלא!</string>
     <string name="partial_success">משהו השתבש, אבל לא הכל נורא. אנא נסה שוב או פנה לתמיכה</string>
     <string name="error_message">משהו השתבש, אנא נסה שוב או פנה לתמיכה</string>
@@ -60,7 +64,7 @@
     <string name="enterAmount">הכנס את הסכום</string>
     <string name="date">תאריך</string>
 
-    // Login and Register Activities
+    // Login Activity
     <string name="email">דוא"ל</string>
     <string name="enterEmail">הכנס את הדוא"ל שלך</string>
     <string name="password">סיסמה</string>
@@ -72,7 +76,15 @@
     <string name="facebook_message">כנס בקלות עם פייסבוק</string>
     <string name="facebook_app_id">609001459303889</string>
 
-    <string name="welcome">ברוך הבא ל-Jgive</string>
+    //Profile Activity
+    <string name="hello">שלום</string>
+    <string name="firstName">שם פרטי</string>
+    <string name="lastName">שם משפחה</string>
+    <string name="title">תפקיד</string>
+    <string name="country">מדינה</string>
+    <string name="biography">ביוגרפיה</string>
+    <string name="website">אתר</string>
+    <string name="monthlyUpdate">עדכןו חודשי</string>
 
     // Content Description
     <string name="jgive_logo">Jgive סמל</string>

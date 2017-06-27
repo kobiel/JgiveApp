@@ -50,10 +50,10 @@ public class TitheUpdateActivity extends AppCompatActivity {
                 startActivity(new Intent(TitheUpdateActivity.this, HomeActivity.class));
                 return true;
             case R.id.action_search:
-                ;
+                //startActivity(new Intent(TitheUpdateActivity.this, SearchActivity.class));
                 return true;
             case R.id.action_profile:
-                ;
+                startActivity(new Intent(TitheUpdateActivity.this, ProfileActivity.class));
                 return true;
             case R.id.action_tithe_calculator:
                 startActivity(new Intent(TitheUpdateActivity.this, TitheActivity.class));

@@ -6,8 +6,8 @@
 
     <ImageView
         android:id="@+id/organizationImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="80sp"
+        android:layout_height="80sp"/>
 
     <TextView
         android:id="@+id/titleTextView"
@@ -36,6 +36,7 @@
         android:layout_toRightOf="@+id/organizationImageView"
         android:layout_toEndOf="@+id/organizationImageView"
         android:layout_below="@+id/titleTextView"
+        android:textColor="@android:color/darker_gray"
         android:textSize="18sp"/>
 
     <TextView

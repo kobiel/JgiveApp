@@ -2,6 +2,8 @@ package com.jgive.kobieliasi.jgiveapp;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -11,7 +13,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.facebook.AccessToken;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -120,4 +126,60 @@ public class DataAccess {
         return false;
     }
 
+    public boolean getProfile(int id) {
+        progressDialog = ProgressDialog.show(context, "Getting profile", "Please wait", true);
+        String URL = JGIVE_URL + "/profile/" + id;
+        // Request a Json response from the provided URL.
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // Check if the request failed
+                        if (response.isNull("Error")) {
+                            //TODO: case of no data
+                        }//end if
+                        else {
+                            //TODO: case of data
+                        }//end else
+                        progressDialog.dismiss();
+                    }//end onResponse
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                Toast.makeText(context, context.getString(R.string.error_message), Toast.LENGTH_LONG).show();
+            }//end onErrorResponse
+        });
+        // Add the request to the RequestQueue.
+        mRequestQueue.add(request);
+        return false;
+    }
+
+    public void getFacebookProfile(){
+        progressDialog = ProgressDialog.show(context, "Getting profile", "Please wait", true);
+        GraphRequest request = GraphRequest.newMeRequest(
+                AccessToken.getCurrentAccessToken(),
+                new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        Log.d("DataAccess", response.toString());
+                        try {
+                            String id = object.getString("id");
+                            String email = object.getString("email");
+                            String firstName = object.getString("first_name");
+                            String lastName = object.getString("last_name");
+                            String picture = object.getString("picture");
+                            //String user_website = object.getString("user_website"); // TODO: Enable this
+                        }// end try
+                        catch (JSONException e) {
+                            Log.d("DataAccess", e.toString());
+                        }//end catch
+                        progressDialog.dismiss();
+                    }
+                });
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "id,email,first_name,last_name,picture"); // TODO: Add user_website
+        request.setParameters(parameters);
+        request.executeAsync();
+    }
 }
