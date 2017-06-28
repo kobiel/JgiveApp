@@ -2,21 +2,28 @@ package com.jgive.kobieliasi.jgiveapp;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.NetworkImageView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    private NetworkImageView profileImage;
+    private final int FACEBOOK_LOGIN = 100;
+    private ImageView profileImage;
     private TextView welcomeTitle;
     private TextView firstName;
     private TextView lastName;
@@ -76,8 +83,9 @@ public class ProfileActivity extends AppCompatActivity {
                     // Create new intent
                     Intent intent = new Intent(ProfileActivity.this, UpdateProfileActivity.class);
                     // Pass all profile data to update profile activity
-                    String temp = (String) profileImage.getTag();
-                    intent.putExtra("profileImage", (String) profileImage.getTag());
+                    profileImage.buildDrawingCache();
+                    Bitmap bitmap = profileImage.getDrawingCache();
+                    intent.putExtra("profileImage", bitmap);
                     intent.putExtra("firstName", firstName.getText().toString());
                     intent.putExtra("lastName", lastName.getText().toString());
                     intent.putExtra("title", title.getText().toString());
@@ -91,9 +99,8 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-
-        profileImage = (NetworkImageView)findViewById(R.id.profileNetworkImageView);
-        welcomeTitle = (TextView)findViewById(R.id.welcomeTitle);
+        profileImage = (ImageView) findViewById(R.id.profileImageView);
+        welcomeTitle = (TextView)findViewById(R.id.welcomeTitleTextView);
         firstName = (TextView)findViewById(R.id.firstNameTextView);
         lastName = (TextView)findViewById(R.id.lastNameTextView);
         title = (TextView)findViewById(R.id.titleTextView);
@@ -107,11 +114,56 @@ public class ProfileActivity extends AppCompatActivity {
         // Get the login method from the data file
         String login_via = sharedPreferences.getString("login_via", "jgive");
 
-        // Ask to get the records from the server
-        DataAccess dataAccess = new DataAccess(this);
-        if (login_via.equals("jgive")) {
-            if (dataAccess.getProfile(1)) {
+        Handler handler = new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                switch (msg.what) {
+                    case FACEBOOK_LOGIN:
+                        try {
+                            String user_picture = "https://d1qvck26m1aukd.cloudfront.net/defaults/users/avatars/missing.jpg";
+                            String user_firstName = "";
+                            String user_lastName = "";
+                            String user_biography = "";
+                            String user_website = "";
+                            if (((JSONObject)msg.obj).has("picture")) {
+                                if (((JSONObject)msg.obj).getJSONObject("picture").has("data")) {
+                                    if (((JSONObject)msg.obj).getJSONObject("picture").getJSONObject("data").has("url")) {
+                                        user_picture = ((JSONObject)msg.obj).getJSONObject("picture").getJSONObject("data").get("url").toString();
+                                    }//end if
+                                }//end if
+                            }//end if
+                            if (((JSONObject)msg.obj).has("first_name")) {
+                                user_firstName = ((JSONObject)msg.obj).get("first_name").toString();
+                            }//end if
+                            if (((JSONObject)msg.obj).has("last_name")) {
+                                user_lastName = ((JSONObject)msg.obj).get("last_name").toString();
+                            }//end if
+                            if (((JSONObject)msg.obj).has("about")) {
+                                user_biography = ((JSONObject)msg.obj).get("about").toString();
+                            }//end if
+                            if (((JSONObject)msg.obj).has("website")) {
+                                user_website = ((JSONObject)msg.obj).get("website").toString();
+                            }//end if
+                            // Set the view components
+                            new ImageDownloaderTask(profileImage).execute(user_picture);
+                            welcomeTitle.setText(welcomeTitle.getText().toString() + " " + user_firstName);
+                            firstName.setText(user_firstName);
+                            lastName.setText(user_lastName);
+                            biography.setText(user_biography);
+                            website.setText(user_website);
+                        }// end try
+                        catch (JSONException e) {
+                            Log.d("ProfileActivity", e.toString());
+                        }//end catch
+                }//end switch
+            }
+        };
 
+        // Ask to get the records from the server
+        DataAccess dataAccess = new DataAccess(this, handler);
+        if (login_via.equals("jgive")) {
+            if (dataAccess.getProfile(0)) {
+                // TODO: get the profile from the server
             }//end if
             else {
 

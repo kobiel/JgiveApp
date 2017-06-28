@@ -3,6 +3,8 @@ package com.jgive.kobieliasi.jgiveapp;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -30,12 +32,16 @@ import org.json.JSONObject;
 public class DataAccess {
 
     private final String JGIVE_URL = "http://api.jgive.com";
+    private final int FACEBOOK_LOGIN = 100;
+
+    Handler handler;
     private Context context;
     private RequestQueue mRequestQueue;
     private ProgressDialog progressDialog;
 
-    public DataAccess(Context context) {
+    public DataAccess(Context context, Handler handler) {
         this.context = context;
+        this.handler = handler;
         mRequestQueue = Volley.newRequestQueue(context);
     }
 
@@ -163,22 +169,15 @@ public class DataAccess {
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
                         Log.d("DataAccess", response.toString());
-                        try {
-                            String id = object.getString("id");
-                            String email = object.getString("email");
-                            String firstName = object.getString("first_name");
-                            String lastName = object.getString("last_name");
-                            String picture = object.getString("picture");
-                            //String user_website = object.getString("user_website"); // TODO: Enable this
-                        }// end try
-                        catch (JSONException e) {
-                            Log.d("DataAccess", e.toString());
-                        }//end catch
+                        // Send the data back to the activity
+                        Message msg = handler.obtainMessage(FACEBOOK_LOGIN, object);
+                        handler.sendMessage(msg);
+                        // Dismiss the progress dialog
                         progressDialog.dismiss();
                     }
                 });
         Bundle parameters = new Bundle();
-        parameters.putString("fields", "id,email,first_name,last_name,picture"); // TODO: Add user_website
+        parameters.putString("fields", "id,email,first_name,last_name,picture,about"); // TODO: Add user_website
         request.setParameters(parameters);
         request.executeAsync();
     }

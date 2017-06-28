@@ -1,6 +1,7 @@
 package com.jgive.kobieliasi.jgiveapp;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -9,13 +10,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
+import android.widget.ImageView;
 
 public class UpdateProfileActivity extends AppCompatActivity {
 
-    private NetworkImageView profileImage;
+    private ImageView profileImage;
     private EditText firstName;
     private EditText lastName;
     private EditText title;
@@ -68,7 +67,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         });
 
         // Set the view components
-        profileImage = (NetworkImageView)findViewById(R.id.profileNetworkImageView);
+        profileImage = (ImageView) findViewById(R.id.profileImageView);
         firstName = (EditText) findViewById(R.id.firstNameEditText);
         lastName = (EditText)findViewById(R.id.lastNameEditText);
         title = (EditText)findViewById(R.id.titleEditText);
@@ -78,8 +77,8 @@ public class UpdateProfileActivity extends AppCompatActivity {
         monthlyUpdate = (EditText)findViewById(R.id.monthlyUpdateEditText);
 
         // Read the data from the profile activity
-        // TODO: Set the profile image
-        //profileImage.setImageUrl("", new ImageLoader());
+        Bitmap bitmap = getIntent().getParcelableExtra("profileImage");
+        profileImage.setImageBitmap(bitmap);
         firstName.setText(getIntent().getStringExtra("firstName"));
         lastName.setText(getIntent().getStringExtra("lastName"));
         title.setText(getIntent().getStringExtra("title"));

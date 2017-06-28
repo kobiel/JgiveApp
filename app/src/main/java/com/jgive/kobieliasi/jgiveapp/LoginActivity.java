@@ -3,8 +3,8 @@ package com.jgive.kobieliasi.jgiveapp;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -35,6 +34,7 @@ import java.util.Arrays;
  */
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
+    Handler handler;
     private LoginButton facebookLoginButton;
     private CallbackManager callbackManager;
     private EditText emailEditText;
@@ -57,18 +57,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        // Set handler to communicate with the DataAccess
+        handler = new Handler(){
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, AccessToken.getCurrentAccessToken().toString(), Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void handleMessage(Message msg) {
+                Log.d("LoginActivity", msg.toString());
             }
-        });
+        };
 
         // Set the facebook login button
         facebookLoginButton = (LoginButton) findViewById(R.id.facebook_login_button);
-        facebookLoginButton.setReadPermissions(Arrays.asList("public_profile", "email", "user_website"));
+        facebookLoginButton.setReadPermissions(Arrays.asList("public_profile", "email", "user_about_me", "user_website"));
         // Register the callback for the facebook login
         facebookLoginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -116,7 +115,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         registerButton.setOnClickListener(this);
 
         // To communicate with the server
-        dataAccess = new DataAccess(this);
+        dataAccess = new DataAccess(this, handler);
 
         // Shared Preferences file to save the login data
         sharedPreferences = getSharedPreferences("jgiveDataFile", MODE_PRIVATE);
