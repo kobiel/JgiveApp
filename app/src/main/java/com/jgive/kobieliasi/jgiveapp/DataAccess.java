@@ -19,8 +19,9 @@ import com.facebook.AccessToken;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 
-import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 /**
  * Created by Kobi Eliasi on 25/02/2017.
@@ -33,15 +34,19 @@ public class DataAccess {
 
     private final String JGIVE_URL = "http://api.jgive.com";
     private final int FACEBOOK_LOGIN = 100;
+    private final int JGIVE_LOGIN = 101;
+    private final int GET_ORGANIZATIONS = 200;
 
-    Handler handler;
     private Context context;
+    private Handler handler;
+    private DBHandler dbHandler;
     private RequestQueue mRequestQueue;
     private ProgressDialog progressDialog;
 
     public DataAccess(Context context, Handler handler) {
         this.context = context;
         this.handler = handler;
+        dbHandler = new DBHandler(context);
         mRequestQueue = Volley.newRequestQueue(context);
     }
 
@@ -54,12 +59,9 @@ public class DataAccess {
                     @Override
                     public void onResponse(String response) {
                         // Check if the registration succeeded
-                        if (response.isEmpty()) {
-
+                        if (!response.isEmpty()) {
+                            // TODO: case of data
                         }//end if
-                        else {
-
-                        }//end else
                         progressDialog.dismiss();
                     }//end onResponse
                 }, new Response.ErrorListener() {
@@ -83,12 +85,9 @@ public class DataAccess {
                     @Override
                     public void onResponse(JSONObject response) {
                         // Check if the login failed
-                        if (response.isNull("Error")) {
-
+                        if (!response.isNull("Error")) {
+                            // TODO: case of data
                         }//end if
-                        else {
-
-                        }//end else
                         progressDialog.dismiss();
                     }//end onResponse
                 }, new Response.ErrorListener() {
@@ -103,36 +102,53 @@ public class DataAccess {
         return false;
     }
 
-    public boolean getOrganizations() {
+    public void getOrganizations() {
         progressDialog = ProgressDialog.show(context, "Updating", "Please wait", true);
         String URL = JGIVE_URL + "/organizations/";
         // Request a Json response from the provided URL.
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL, null,
+        final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         // Check if the request failed
-                        if (response.isNull("Error")) {
-                            //TODO: case of no data
+                        if (!response.isNull("Error")) {
+                            Log.d("DataAccess", response.toString());
+                            // Send the data back to the activity
+                            Message msg = handler.obtainMessage(GET_ORGANIZATIONS, dbHandler.getOrganizations());
+                            // TODO: change the above line with the following when go live with server
+                            //Message msg = handler.obtainMessage(GET_ORGANIZATIONS, response);
+                            handler.sendMessage(msg);
                         }//end if
-                        else {
-                            //TODO: case of data
-                        }//end else
                         progressDialog.dismiss();
                     }//end onResponse
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                // TODO: delete following 2 lines when go live with server
+                Message msg = handler.obtainMessage(GET_ORGANIZATIONS, dbHandler.getOrganizations());
+                handler.sendMessage(msg);
                 progressDialog.dismiss();
-                Toast.makeText(context, context.getString(R.string.error_message), Toast.LENGTH_LONG).show();
+                // TODO: uncomment this when go live with server
+                //Toast.makeText(context, context.getString(R.string.error_message), Toast.LENGTH_LONG).show();
             }//end onErrorResponse
         });
         // Add the request to the RequestQueue.
         mRequestQueue.add(request);
-        return false;
     }
 
-    public boolean getProfile(int id) {
+    public void updateProfile(ArrayList<String> newProfile) {
+        String picture = newProfile.get(0);
+        String firstName = newProfile.get(1);
+        String lastName = newProfile.get(2);
+        String title = newProfile.get(3);
+        String country = newProfile.get(4);
+        String biography = newProfile.get(5);
+        String website = newProfile.get(6);
+        String monthlyUpdate = newProfile.get(7);
+        // TODO: update the server
+    }
+
+    public void getProfile(long id) {
         progressDialog = ProgressDialog.show(context, "Getting profile", "Please wait", true);
         String URL = JGIVE_URL + "/profile/" + id;
         // Request a Json response from the provided URL.
@@ -141,12 +157,12 @@ public class DataAccess {
                     @Override
                     public void onResponse(JSONObject response) {
                         // Check if the request failed
-                        if (response.isNull("Error")) {
-                            //TODO: case of no data
+                        if (!response.isNull("Error")) {
+                            Log.d("DataAccess", response.toString());
+                            // Send the data back to the activity
+                            Message msg = handler.obtainMessage(JGIVE_LOGIN, response);
+                            handler.sendMessage(msg);
                         }//end if
-                        else {
-                            //TODO: case of data
-                        }//end else
                         progressDialog.dismiss();
                     }//end onResponse
                 }, new Response.ErrorListener() {
@@ -158,7 +174,6 @@ public class DataAccess {
         });
         // Add the request to the RequestQueue.
         mRequestQueue.add(request);
-        return false;
     }
 
     public void getFacebookProfile(){
@@ -177,7 +192,7 @@ public class DataAccess {
                     }
                 });
         Bundle parameters = new Bundle();
-        parameters.putString("fields", "id,email,first_name,last_name,picture,about"); // TODO: Add user_website
+        parameters.putString("fields", "id,email,first_name,last_name,picture,about,website");
         request.setParameters(parameters);
         request.executeAsync();
     }

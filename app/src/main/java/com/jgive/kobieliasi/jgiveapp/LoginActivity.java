@@ -67,6 +67,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         // Set the facebook login button
         facebookLoginButton = (LoginButton) findViewById(R.id.facebook_login_button);
+        // List of facebook permissions needed by the App
         facebookLoginButton.setReadPermissions(Arrays.asList("public_profile", "email", "user_about_me", "user_website"));
         // Register the callback for the facebook login
         facebookLoginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_login"
@@ -13,127 +13,132 @@
     tools:context="com.jgive.kobieliasi.jgiveapp.LoginActivity"
     tools:showIn="@layout/activity_login">
 
-    <!-- Email Title -->
-    <TextView
-        android:id="@+id/emailTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:text="@string/email"/>
-
-    <!-- Email filed -->
-    <EditText
-        android:id="@+id/emailEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_toEndOf="@+id/emailTextView"
-        android:layout_toRightOf="@+id/emailTextView"
-        android:layout_alignBaseline="@+id/emailTextView"
-        android:layout_alignBottom="@+id/emailTextView"
-        android:textSize="20sp"
-        android:hint="@string/enterEmail"
-        android:inputType="textEmailAddress"/>
-
-    <!-- Password Title -->
-    <TextView
-        android:id="@+id/passwordTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_below="@+id/emailTextView"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:text="@string/password"/>
-
-    <!-- Password filed -->
-    <EditText
-        android:id="@+id/passwordEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_toEndOf="@+id/passwordTextView"
-        android:layout_toRightOf="@+id/passwordTextView"
-        android:layout_alignBaseline="@+id/passwordTextView"
-        android:layout_alignBottom="@+id/passwordTextView"
-        android:textSize="20sp"
-        android:hint="@string/enterPassword"
-        android:inputType="textPassword"/>
-
-    <!-- Login Title -->
-    <TextView
-        android:id="@+id/loginTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/passwordTextView"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:text="@string/login_message"/>
-
-    <!-- Login button -->
-    <Button
-        android:id="@+id/loginButton"
+    <RelativeLayout
+        android:id="@+id/loginRelativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_below="@+id/loginTextView"
-        android:textSize="20sp"
-        android:text="@string/login"/>
+        android:layout_height="wrap_content">
 
-    <!-- Register Title -->
-    <TextView
-        android:id="@+id/registerTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/loginButton"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:text="@string/register_message"/>
+        <!-- Email Title -->
+        <TextView
+            android:id="@+id/emailTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/email"/>
 
-    <!-- Register button -->
-    <Button
-        android:id="@+id/registerButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_below="@+id/registerTextView"
-        android:textSize="20sp"
-        android:text="@string/register"/>
+        <!-- Email filed -->
+        <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_toEndOf="@+id/emailTextView"
+            android:layout_toRightOf="@+id/emailTextView"
+            android:layout_alignBaseline="@+id/emailTextView"
+            android:textSize="20sp"
+            android:hint="@string/enterEmail"
+            android:inputType="textEmailAddress"/>
 
-    <!-- Facebook Title -->
-    <TextView
-        android:id="@+id/facebookTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/registerButton"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:text="@string/facebook_message"/>
+        <!-- Password Title -->
+        <TextView
+            android:id="@+id/passwordTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_below="@+id/emailTextView"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/password"/>
 
-    <!-- Facebook logo -->
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/facebook_login_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
-        android:layout_below="@+id/facebookTextView"/>
+        <!-- Password filed -->
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_toEndOf="@+id/passwordTextView"
+            android:layout_toRightOf="@+id/passwordTextView"
+            android:layout_alignBaseline="@+id/passwordTextView"
+            android:textSize="20sp"
+            android:hint="@string/enterPassword"
+            android:inputType="textPassword"/>
 
-</RelativeLayout>
+        <!-- Login Title -->
+        <TextView
+            android:id="@+id/loginTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/passwordTextView"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/login_message"/>
+
+        <!-- Login button -->
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_below="@+id/loginTextView"
+            android:textSize="20sp"
+            android:text="@string/login"/>
+
+        <!-- Register Title -->
+        <TextView
+            android:id="@+id/registerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/loginButton"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/register_message"/>
+
+        <!-- Register button -->
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_below="@+id/registerTextView"
+            android:textSize="20sp"
+            android:text="@string/register"/>
+
+        <!-- Facebook Title -->
+        <TextView
+            android:id="@+id/facebookTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/registerButton"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/facebook_message"/>
+
+        <!-- Facebook logo -->
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/facebook_login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_below="@+id/facebookTextView"/>
+
+    </RelativeLayout>
+
+</ScrollView>

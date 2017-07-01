@@ -7,14 +7,15 @@
     <string name="title_activity_tithe_update">עדכון מעשר</string>
     <string name="title_activity_profile">הפרופיל שלך</string>
     <string name="title_activity_update_profile">עדכון הפרופיל</string>
+    <string name="title_activity_donation">תרומה</string>
+    <string name="title_activity_tax_refund">החזר מס</string>
 
     // Messages
     <string name="welcome">ברוך הבא ל-Jgive</string>
     <string name="success">נפלא!</string>
     <string name="partial_success">משהו השתבש, אבל לא הכל נורא. אנא נסה שוב או פנה לתמיכה</string>
     <string name="error_message">משהו השתבש, אנא נסה שוב או פנה לתמיכה</string>
-
-    <string name="tithe_calculator">מחשבון מעשר</string>
+    <string name="donation_thanks">"תודה על תרומתך למטרה חשובה זו"</string>
 
     // Tithe Activity
     <string-array name="years_array">
@@ -85,6 +86,9 @@
     <string name="biography">ביוגרפיה</string>
     <string name="website">אתר</string>
     <string name="monthlyUpdate">עדכןו חודשי</string>
+
+    //Donation Activity
+    <string name="donationAmount">סכום התרומה</string>
 
     // Content Description
     <string name="jgive_logo">Jgive סמל</string>

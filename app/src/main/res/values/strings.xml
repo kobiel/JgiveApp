@@ -7,14 +7,15 @@
     <string name="title_activity_tithe_update">Tithe Update</string>
     <string name="title_activity_profile">Your Profile</string>
     <string name="title_activity_update_profile">Update Your Profile</string>
+    <string name="title_activity_donation">Donation</string>
+    <string name="title_activity_tax_refund">Tax Refund</string>
 
     // Messages
     <string name="welcome">Welcome to Jgive</string>
     <string name="success">Great!</string>
     <string name="partial_success">Something went wrong, but not all bad. Please try again or contact our support</string>
     <string name="error_message">Something went wrong, Please try again or contact our support</string>
-
-    <string name="tithe_calculator">Tithe Calculator</string>
+    <string name="donation_thanks">"Thank you for donating this important goal"</string>
 
     // Tithe Activity
     <string-array name="years_array">
@@ -86,6 +87,9 @@
     <string name="biography">Biography</string>
     <string name="website">Website</string>
     <string name="monthlyUpdate">Monthly Update</string>
+
+    //Donation Activity
+    <string name="donationAmount">Donation Amount</string>
 
     // Content Description
     <string name="jgive_logo">Jgive Logo</string>

@@ -22,14 +22,21 @@
     <item
         android:id="@+id/action_profile"
         android:icon="@drawable/ic_person_black_24dp"
-        android:title=""
+        android:title="@string/title_activity_profile"
         app:showAsAction="always"/>
 
     <!-- Calculator Icon -->
     <item
         android:id="@+id/action_tithe_calculator"
         android:icon="@drawable/calculator"
-        android:title="@string/tithe_calculator"
+        android:title="@string/title_activity_tithe"
+        app:showAsAction="ifRoom"/>
+
+    <!-- Tax refund Icon -->
+    <item
+        android:id="@+id/action_tax_refund"
+        android:icon="@drawable/tax_refund"
+        android:title="@string/title_activity_tax_refund"
         app:showAsAction="ifRoom"/>
 
 </menu>
