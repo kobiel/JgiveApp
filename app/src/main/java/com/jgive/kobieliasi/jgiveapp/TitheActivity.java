@@ -26,6 +26,7 @@ import java.util.StringTokenizer;
  */
 public class TitheActivity extends AppCompatActivity {
 
+    String user_email = "";
     String yearPosition = "";
     int monthPosition = 0;
 
@@ -50,16 +51,30 @@ public class TitheActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_home:
-                startActivity(new Intent(TitheActivity.this, HomeActivity.class));
+                Intent intent1 = new Intent(TitheActivity.this, HomeActivity.class);
+                intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent1.putExtra("user_email", user_email);
+                startActivity(intent1);
                 return true;
             case R.id.action_search:
-                //startActivity(new Intent(TitheActivity.this, SearchActivity.class));
+                /*
+                Intent intent2 = new Intent(TitheActivity.this, SearchActivity.class);
+                intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent2.putExtra("user_email", user_email);
+                startActivity(intent2);
+                */
                 return true;
             case R.id.action_profile:
-                startActivity(new Intent(TitheActivity.this, ProfileActivity.class));
+                Intent intent3 = new Intent(TitheActivity.this, ProfileActivity.class);
+                intent3.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent3.putExtra("user_email", user_email);
+                startActivity(intent3);
                 return true;
             case R.id.action_tithe_calculator:
-                startActivity(new Intent(TitheActivity.this, TitheActivity.class));
+                Intent intent4 = new Intent(TitheActivity.this, TitheActivity.class);
+                intent4.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent4.putExtra("user_email", user_email);
+                startActivity(intent4);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -77,9 +92,15 @@ public class TitheActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(TitheActivity.this, TitheUpdateActivity.class));
+                Intent intent = new Intent(TitheActivity.this, TitheUpdateActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("user_email", user_email);
+                startActivity(intent);
             }
         });
+
+        // Get the connected user email
+        user_email = getIntent().getStringExtra("user_email");
 
         // Declare the spinners
         final Spinner yearSpinner = (Spinner) findViewById(R.id.inputYearSpinner);

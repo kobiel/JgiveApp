@@ -27,6 +27,7 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private final int GET_ORGANIZATIONS = 200;
 
+    String user_email = "";
     private Handler handler;
     private ListView organizationsList;
     private ArrayAdapter<String> organizationsAdapter;
@@ -42,16 +43,30 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_home:
-                startActivity(new Intent(HomeActivity.this, HomeActivity.class));
+                Intent intent1 = new Intent(HomeActivity.this, HomeActivity.class);
+                intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent1.putExtra("user_email", user_email);
+                startActivity(intent1);
                 return true;
             case R.id.action_search:
-                //startActivity(new Intent(HomeActivity.this, SearchActivity.class));
+                /*
+                Intent intent2 = new Intent(HomeActivity.this, SearchActivity.class);
+                intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent2.putExtra("user_email", user_email);
+                startActivity(intent2);
+                */
                 return true;
             case R.id.action_profile:
-                startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
+                Intent intent3 = new Intent(HomeActivity.this, ProfileActivity.class);
+                intent3.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent3.putExtra("user_email", user_email);
+                startActivity(intent3);
                 return true;
             case R.id.action_tithe_calculator:
-                startActivity(new Intent(HomeActivity.this, TitheActivity.class));
+                Intent intent4 = new Intent(HomeActivity.this, TitheActivity.class);
+                intent4.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent4.putExtra("user_email", user_email);
+                startActivity(intent4);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -64,6 +79,9 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // Get the connected user email
+        user_email = getIntent().getStringExtra("user_email");
 
         // Set handler to communicate with the DataAccess
         handler = new Handler(){
@@ -142,6 +160,7 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onItemClick(AdapterView<?> arg0, View arg1, int onItemClick, long id){
         Intent intent = new Intent(HomeActivity.this, DonationActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("user_email", user_email);
         intent.putExtra("itemClickID", onItemClick);
         startActivity(intent);
     }

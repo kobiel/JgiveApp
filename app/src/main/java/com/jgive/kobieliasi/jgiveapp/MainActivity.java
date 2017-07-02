@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         timer.schedule(loginTimerTask, 5*second);
 
         sharedPreferences = getSharedPreferences("jgiveDataFile", MODE_PRIVATE);
-        String email = sharedPreferences.getString("login_email", "");
+        final String email = sharedPreferences.getString("login_email", "");
         String password = sharedPreferences.getString("login_password", "");
 
         if (Profile.getCurrentProfile() != null && AccessToken.getCurrentAccessToken() != null) {
@@ -45,7 +45,10 @@ public class MainActivity extends AppCompatActivity {
             loginTimerTask.cancel();
             timer.schedule(new TimerTask() {
                 public void run() {
-                    startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("user_email", email);
+                    startActivity(intent);
                 }
             }, 4*second);
         }//end if
@@ -54,7 +57,10 @@ public class MainActivity extends AppCompatActivity {
             // TODO: try to connect to the server and confirm the credentials
             timer.schedule(new TimerTask() {
                 public void run() {
-                    startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("user_email", email);
+                    startActivity(intent);
                 }
             }, 4*second);
         }//end if

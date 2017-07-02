@@ -20,6 +20,7 @@ import java.util.Arrays;
 
 public class UpdateProfileActivity extends AppCompatActivity {
 
+    private String user_email = "";
     private Handler handler;
     private ImageView profileImage;
     private EditText firstName;
@@ -41,16 +42,30 @@ public class UpdateProfileActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_home:
-                startActivity(new Intent(UpdateProfileActivity.this, HomeActivity.class));
+                Intent intent1 = new Intent(UpdateProfileActivity.this, HomeActivity.class);
+                intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent1.putExtra("user_email", user_email);
+                startActivity(intent1);
                 return true;
             case R.id.action_search:
-                //startActivity(new Intent(UpdateProfileActivity.this, SearchActivity.class));
+                /*
+                Intent intent2 = new Intent(UpdateProfileActivity.this, SearchActivity.class);
+                intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent2.putExtra("user_email", user_email);
+                startActivity(intent2);
+                */
                 return true;
             case R.id.action_profile:
-                startActivity(new Intent(UpdateProfileActivity.this, ProfileActivity.class));;
+                Intent intent3 = new Intent(UpdateProfileActivity.this, ProfileActivity.class);
+                intent3.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent3.putExtra("user_email", user_email);
+                startActivity(intent3);
                 return true;
             case R.id.action_tithe_calculator:
-                startActivity(new Intent(UpdateProfileActivity.this, TitheActivity.class));
+                Intent intent4 = new Intent(UpdateProfileActivity.this, TitheActivity.class);
+                intent4.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent4.putExtra("user_email", user_email);
+                startActivity(intent4);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -83,9 +98,15 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 DataAccess dataAccess = new DataAccess(UpdateProfileActivity.this, handler);
                 dataAccess.updateProfile(newProfile);
                 // Go back to the profile
-                startActivity(new Intent(UpdateProfileActivity.this, ProfileActivity.class));
+                Intent intent = new Intent(UpdateProfileActivity.this, ProfileActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("user_email", user_email);
+                startActivity(intent);
             }
         });
+
+        // Get the connected user email
+        user_email = getIntent().getStringExtra("user_email");
 
         // Set handler to communicate with the DataAccess
         handler = new Handler(){

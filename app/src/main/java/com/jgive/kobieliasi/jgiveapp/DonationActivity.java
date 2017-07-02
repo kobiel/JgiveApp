@@ -22,6 +22,7 @@ import java.util.TimerTask;
 
 public class DonationActivity extends AppCompatActivity {
 
+    String user_email = "";
     DBHandler dbHandler;
     private ImageView organizationImage;
     private TextView title;
@@ -40,16 +41,30 @@ public class DonationActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_home:
-                startActivity(new Intent(DonationActivity.this, HomeActivity.class));
+                Intent intent1 = new Intent(DonationActivity.this, HomeActivity.class);
+                intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent1.putExtra("user_email", user_email);
+                startActivity(intent1);
                 return true;
             case R.id.action_search:
-                //startActivity(new Intent(DonationActivity.this, SearchActivity.class));
+                /*
+                Intent intent2 = new Intent(DonationActivity.this, SearchActivity.class);
+                intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent2.putExtra("user_email", user_email);
+                startActivity(intent2);
+                */
                 return true;
             case R.id.action_profile:
-                startActivity(new Intent(DonationActivity.this, ProfileActivity.class));
+                Intent intent3 = new Intent(DonationActivity.this, ProfileActivity.class);
+                intent3.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent3.putExtra("user_email", user_email);
+                startActivity(intent3);
                 return true;
             case R.id.action_tithe_calculator:
-                startActivity(new Intent(DonationActivity.this, TitheActivity.class));
+                Intent intent4 = new Intent(DonationActivity.this, TitheActivity.class);
+                intent4.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent4.putExtra("user_email", user_email);
+                startActivity(intent4);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -80,7 +95,10 @@ public class DonationActivity extends AppCompatActivity {
                 TimerTask loginTimerTask = new TimerTask() {
                     @Override
                     public void run() {
-                        startActivity(new Intent(DonationActivity.this, HomeActivity.class));
+                        Intent intent = new Intent(DonationActivity.this, HomeActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.putExtra("user_email", user_email);
+                        startActivity(intent);
                     }
                 };
                 timer.schedule(loginTimerTask, Snackbar.LENGTH_LONG+second);
@@ -88,8 +106,9 @@ public class DonationActivity extends AppCompatActivity {
         });
 
         // Get the clicked organization ID
-        Intent intent = getIntent();
-        int id = intent.getIntExtra("itemClickID", -1);
+        int id = getIntent().getIntExtra("itemClickID", -1);
+        // Get the connected user email
+        user_email = getIntent().getStringExtra("user_email");
 
         dbHandler = new DBHandler(this);
         JSONObject jsonObject = dbHandler.getOrganization(id);

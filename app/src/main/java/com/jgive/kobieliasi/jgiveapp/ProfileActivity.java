@@ -31,6 +31,7 @@ public class ProfileActivity extends AppCompatActivity {
     private final int FACEBOOK_LOGIN = 100;
     private final int JGIVE_LOGIN = 101;
 
+    private String user_email = "";
     private ImageView profileImage;
     private TextView welcomeTitle;
     private TextView firstName;
@@ -54,16 +55,30 @@ public class ProfileActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_home:
-                startActivity(new Intent(ProfileActivity.this, HomeActivity.class));
+                Intent intent1 = new Intent(ProfileActivity.this, HomeActivity.class);
+                intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent1.putExtra("user_email", user_email);
+                startActivity(intent1);
                 return true;
             case R.id.action_search:
-                //startActivity(new Intent(ProfileActivity.this, SearchActivity.class));
+                /*
+                Intent intent2 = new Intent(ProfileActivity.this, SearchActivity.class);
+                intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent2.putExtra("user_email", user_email);
+                startActivity(intent2);
+                */
                 return true;
             case R.id.action_profile:
-                startActivity(new Intent(ProfileActivity.this, ProfileActivity.class));;
+                Intent intent3 = new Intent(ProfileActivity.this, ProfileActivity.class);
+                intent3.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent3.putExtra("user_email", user_email);
+                startActivity(intent3);
                 return true;
             case R.id.action_tithe_calculator:
-                startActivity(new Intent(ProfileActivity.this, TitheActivity.class));
+                Intent intent4 = new Intent(ProfileActivity.this, TitheActivity.class);
+                intent4.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent4.putExtra("user_email", user_email);
+                startActivity(intent4);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -87,13 +102,15 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // Get the login method from the data file
                 String login_via = sharedPreferences.getString("login_via", "jgive");
-                if (!login_via.equals("facebook")) {
+                if (login_via.equals("facebook")) {
                     Snackbar.make(view, "Please edit your profile at Facebook", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }//end if
                 else {
                     // Create new intent
                     Intent intent = new Intent(ProfileActivity.this, UpdateProfileActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("user_email", user_email);
                     // Pass all profile data to update profile activity
                     profileImage.buildDrawingCache();
                     Bitmap bitmap = profileImage.getDrawingCache();
@@ -110,6 +127,9 @@ public class ProfileActivity extends AppCompatActivity {
                 }//else
             }
         });
+
+        // Get the connected user email
+        user_email = getIntent().getStringExtra("user_email");
 
         profileImage = (ImageView) findViewById(R.id.profileImageView);
         welcomeTitle = (TextView)findViewById(R.id.welcomeTitleTextView);

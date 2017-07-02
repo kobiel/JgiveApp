@@ -84,6 +84,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     String email = object.getString("email");
                                     sharedPreferences.edit().putString("login_email", email).apply();
                                     sharedPreferences.edit().putString("login_via", "facebook").apply();
+                                    // Open the home screen
+                                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    intent.putExtra("user_email", email);
+                                    startActivity(intent);
                                 }// end try
                                 catch (JSONException e) {
                                     Log.d("LoginActivity", e.toString());
@@ -94,8 +99,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 parameters.putString("fields", "id,email");
                 request.setParameters(parameters);
                 request.executeAsync();
-                // Open the home screen
-                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
             }
             @Override
             public void onCancel() {
@@ -140,7 +143,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         sharedPreferences.edit().putString("login_email", email).apply();
                         sharedPreferences.edit().putString("login_password", password).apply();
                         sharedPreferences.edit().putString("login_via", "jgive").apply();
-                        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                        intent.putExtra("user_email", email);
+                        startActivity(intent);
                     }//end if
                 }//end if
                 break;
@@ -150,7 +155,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         sharedPreferences.edit().putString("login_email", email).apply();
                         sharedPreferences.edit().putString("login_password", password).apply();
                         sharedPreferences.edit().putString("login_via", "jgive").apply();
-                        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                        intent.putExtra("user_email", email);
+                        startActivity(intent);
                     }//end if
                 }//end if
                 break;

@@ -43,7 +43,8 @@
             android:layout_alignBaseline="@+id/emailTextView"
             android:textSize="20sp"
             android:hint="@string/enterEmail"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress"
+            android:focusableInTouchMode="false"/>
 
         <!-- Password Title -->
         <TextView
@@ -71,7 +72,8 @@
             android:layout_alignBaseline="@+id/passwordTextView"
             android:textSize="20sp"
             android:hint="@string/enterPassword"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:focusableInTouchMode="false"/>
 
         <!-- Login Title -->
         <TextView

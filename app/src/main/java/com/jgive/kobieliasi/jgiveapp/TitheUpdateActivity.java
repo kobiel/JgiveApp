@@ -30,6 +30,8 @@ public class TitheUpdateActivity extends AppCompatActivity {
     final static int EXPENSE = 1;
     final static int DONATION = 2;
 
+    String user_email = "";
+
     int type = 0;
     TextView srcTrgTitleTextView;
     EditText srcTrgNameEditText;
@@ -47,16 +49,30 @@ public class TitheUpdateActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_home:
-                startActivity(new Intent(TitheUpdateActivity.this, HomeActivity.class));
+                Intent intent1 = new Intent(TitheUpdateActivity.this, HomeActivity.class);
+                intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent1.putExtra("user_email", user_email);
+                startActivity(intent1);
                 return true;
             case R.id.action_search:
-                //startActivity(new Intent(TitheUpdateActivity.this, SearchActivity.class));
+                /*
+                Intent intent2 = new Intent(TitheUpdateActivity.this, SearchActivity.class);
+                intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent2.putExtra("user_email", user_email);
+                startActivity(intent2);
+                */
                 return true;
             case R.id.action_profile:
-                startActivity(new Intent(TitheUpdateActivity.this, ProfileActivity.class));
+                Intent intent3 = new Intent(TitheUpdateActivity.this, ProfileActivity.class);
+                intent3.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent3.putExtra("user_email", user_email);
+                startActivity(intent3);
                 return true;
             case R.id.action_tithe_calculator:
-                startActivity(new Intent(TitheUpdateActivity.this, TitheActivity.class));
+                Intent intent4 = new Intent(TitheUpdateActivity.this, TitheActivity.class);
+                intent4.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent4.putExtra("user_email", user_email);
+                startActivity(intent4);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -77,6 +93,9 @@ public class TitheUpdateActivity extends AppCompatActivity {
                 update();
             }
         });
+
+        // Get the connected user email
+        user_email = getIntent().getStringExtra("user_email");
 
         Spinner spinner = (Spinner) findViewById(R.id.inputRecordSpinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -137,13 +156,13 @@ public class TitheUpdateActivity extends AppCompatActivity {
         boolean recordAdded = false;
         switch (type) {
             case INCOME:
-                recordAdded = dbHandler.addIncome("User", title, Double.parseDouble(amount), year, month);
+                recordAdded = dbHandler.addIncome(user_email, title, Double.parseDouble(amount), year, month);
                 break;
             case EXPENSE:
-                recordAdded = dbHandler.addExpense("User", title, Double.parseDouble(amount), year, month);
+                recordAdded = dbHandler.addExpense(user_email, title, Double.parseDouble(amount), year, month);
                 break;
             case DONATION:
-                recordAdded = dbHandler.addDonation("User", title, Double.parseDouble(amount), year, month);
+                recordAdded = dbHandler.addDonation(user_email, title, Double.parseDouble(amount), year, month);
                 break;
         }//end switch
 
@@ -178,11 +197,11 @@ public class TitheUpdateActivity extends AppCompatActivity {
         }//end switch
 
         DBHandler dbHandler = new DBHandler(this);
-        ArrayList<String> provision = dbHandler.getProvisionForMonth("User", year, month+1);
+        ArrayList<String> provision = dbHandler.getProvisionForMonth(user_email, year, month+1);
 
         // If no provision found in DB only add current
         if (provision.size() == 0) {
-            return dbHandler.addProvisions("User", year, month, newAmount);
+            return dbHandler.addProvisions(user_email, year, month, newAmount);
         }//end if
         else {
             String provisionID = provision.get(0);
