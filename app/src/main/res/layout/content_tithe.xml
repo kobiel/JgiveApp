@@ -124,15 +124,10 @@
         <!-- Provisions Amount -->
         <TextView
             android:id="@+id/provisionsAmountTextView"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_alignBaseline="@+id/provisionsTitleTextView"
-            android:layout_alignBottom="@+id/provisionsTitleTextView"
-            android:layout_toEndOf="@+id/provisionsTitleTextView"
-            android:layout_toRightOf="@+id/provisionsTitleTextView"
+            android:layout_centerHorizontal="true"
             android:layout_below="@+id/provisionsTitleTextView"
             android:textSize="20sp"/>
 
@@ -151,15 +146,10 @@
         <!-- Balance Amount -->
         <TextView
             android:id="@+id/balanceAmountTextView"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_alignBaseline="@+id/balanceTitleTextView"
-            android:layout_alignBottom="@+id/balanceTitleTextView"
-            android:layout_toEndOf="@+id/balanceTitleTextView"
-            android:layout_toRightOf="@+id/balanceTitleTextView"
+            android:layout_centerHorizontal="true"
             android:layout_below="@+id/balanceTitleTextView"
             android:textSize="20sp"/>
 

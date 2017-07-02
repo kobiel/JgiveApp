@@ -85,7 +85,7 @@ public class DonationActivity extends AppCompatActivity {
                 amountEditText = (EditText)findViewById(R.id.donationAmountEditView);
                 String target = title.getText().toString();
                 Double amount = Double.parseDouble(amountEditText.getText().toString());
-                dbHandler.addDonation("User", target, amount, 2017, 6);
+                dbHandler.addDonation(user_email, target, amount, 2017, 6);
                 Snackbar.make(view, R.string.donation_thanks, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                 // define one second

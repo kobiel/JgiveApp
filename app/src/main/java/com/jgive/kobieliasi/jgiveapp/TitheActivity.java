@@ -158,10 +158,10 @@ public class TitheActivity extends AppCompatActivity {
 
         // Ask to get the records from the DB
         DBHandler dbHandler = new DBHandler(this);
-        ArrayList<String> incomes = dbHandler.getIncomesForMonth("User", Integer.valueOf(yearPosition), monthPosition);
-        ArrayList<String> expenses = dbHandler.getExpensesForMonth("User", Integer.valueOf(yearPosition), monthPosition);
-        ArrayList<String> donations = dbHandler.getDonationsForMonth("User", Integer.valueOf(yearPosition), monthPosition);
-        ArrayList<String> provisions = dbHandler.getProvisionForMonth("User", Integer.valueOf(yearPosition), monthPosition);
+        ArrayList<String> incomes = dbHandler.getIncomesForMonth(user_email, Integer.valueOf(yearPosition), monthPosition);
+        ArrayList<String> expenses = dbHandler.getExpensesForMonth(user_email, Integer.valueOf(yearPosition), monthPosition);
+        ArrayList<String> donations = dbHandler.getDonationsForMonth(user_email, Integer.valueOf(yearPosition), monthPosition);
+        ArrayList<String> provisions = dbHandler.getProvisionForMonth(user_email, Integer.valueOf(yearPosition), monthPosition);
 
         // Set lists adapters
         incomesAdapter = new TitheListViewAdapter(this, R.layout.list_tithe, R.id.incomesListView, incomes);
@@ -197,10 +197,10 @@ public class TitheActivity extends AppCompatActivity {
             double balance = Double.parseDouble(provisions.get(1)) - totalDonations;
             balanceTextView.setText(String.valueOf(balance));
             if (balance < 0) {
-                balanceTextView.setTextColor(redColor);
+                balanceTextView.setTextColor(greenColor);
             }//end else
             else {
-                balanceTextView.setTextColor(greenColor);
+                balanceTextView.setTextColor(redColor);
             }//end else
         }//end if
         else {
